@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/China 3.wav-baed1ca358506e3bc6784444acc1931a.sample"
+
+[deps]
+
+source_file="res://sample/drum/China/China 3.wav"
+dest_files=[ "res://.import/China 3.wav-baed1ca358506e3bc6784444acc1931a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

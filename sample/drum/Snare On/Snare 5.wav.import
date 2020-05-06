@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Snare 5.wav-c67c32952a65767015d74c5f162b77b4.sample"
+
+[deps]
+
+source_file="res://sample/drum/Snare On/Snare 5.wav"
+dest_files=[ "res://.import/Snare 5.wav-c67c32952a65767015d74c5f162b77b4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

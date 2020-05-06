@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Ride Cymbal 4.wav-6e27fe096d454b40372414e2833c578d.sample"
+
+[deps]
+
+source_file="res://sample/drum/Ride Cymbal/Ride Cymbal 4.wav"
+dest_files=[ "res://.import/Ride Cymbal 4.wav-6e27fe096d454b40372414e2833c578d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

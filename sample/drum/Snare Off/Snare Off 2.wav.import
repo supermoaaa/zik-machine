@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Snare Off 2.wav-a7cdfb8165a05173d581a54942fdaa43.sample"
+
+[deps]
+
+source_file="res://sample/drum/Snare Off/Snare Off 2.wav"
+dest_files=[ "res://.import/Snare Off 2.wav-a7cdfb8165a05173d581a54942fdaa43.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

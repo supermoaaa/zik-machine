@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Tom High Flam.wav-29c7947ca1d85071613906d94d30d1d3.sample"
+
+[deps]
+
+source_file="res://sample/drum/Tom High/Tom High Flam.wav"
+dest_files=[ "res://.import/Tom High Flam.wav-29c7947ca1d85071613906d94d30d1d3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

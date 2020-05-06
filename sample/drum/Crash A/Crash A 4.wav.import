@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Crash A 4.wav-9826762a70e1f7f0318c8cc2b7b59b4c.sample"
+
+[deps]
+
+source_file="res://sample/drum/Crash A/Crash A 4.wav"
+dest_files=[ "res://.import/Crash A 4.wav-9826762a70e1f7f0318c8cc2b7b59b4c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

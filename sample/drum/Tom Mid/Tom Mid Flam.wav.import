@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Tom Mid Flam.wav-d85e846d785780fc0c0503f8b5bec55b.sample"
+
+[deps]
+
+source_file="res://sample/drum/Tom Mid/Tom Mid Flam.wav"
+dest_files=[ "res://.import/Tom Mid Flam.wav-d85e846d785780fc0c0503f8b5bec55b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

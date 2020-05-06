@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hi Hat Open Close 5.wav-54e8056b40d9b1553d1c6825830685e2.sample"
+
+[deps]
+
+source_file="res://sample/drum/Hi Hat/Hi Hat Open Close 5.wav"
+dest_files=[ "res://.import/Hi Hat Open Close 5.wav-54e8056b40d9b1553d1c6825830685e2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

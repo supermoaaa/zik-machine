@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/merlin.wav-bd8b887eaf179703931ab6f9bf27be3d.sample"
+
+[deps]
+
+source_file="res://loop/merlin.wav"
+dest_files=[ "res://.import/merlin.wav-bd8b887eaf179703931ab6f9bf27be3d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

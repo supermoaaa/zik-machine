@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Tom Mid 1.wav-e9022008a94f5bb02a223a19de3b4d2e.sample"
+
+[deps]
+
+source_file="res://sample/drum/Tom Mid/Tom Mid 1.wav"
+dest_files=[ "res://.import/Tom Mid 1.wav-e9022008a94f5bb02a223a19de3b4d2e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

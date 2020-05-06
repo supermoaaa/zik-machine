@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/China Mute 2.wav-9a399cb2d4291c0540a07f77d17cd64b.sample"
+
+[deps]
+
+source_file="res://sample/drum/China/China Mute 2.wav"
+dest_files=[ "res://.import/China Mute 2.wav-9a399cb2d4291c0540a07f77d17cd64b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
