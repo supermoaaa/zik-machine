@@ -1,1 +1,3 @@
-live pad sytem
+live pad system
+
+multipatform programm
