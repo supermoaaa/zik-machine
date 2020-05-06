@@ -1,0 +1,861 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://utils/rec_off.png" type="Texture" id=1]
+[ext_resource path="res://utils/rec_over.png" type="Texture" id=2]
+[ext_resource path="res://utils/rec_on.png" type="Texture" id=3]
+[ext_resource path="res://main.gd" type="Script" id=4]
+[ext_resource path="res://utils/faderSmall.png" type="Texture" id=5]
+[ext_resource path="res://utils/faderSmallhi.png" type="Texture" id=6]
+[ext_resource path="res://conf_Panel.gd" type="Script" id=7]
+[ext_resource path="res://Rec_Button.gd" type="Script" id=8]
+[ext_resource path="res://pad_gen.gd" type="Script" id=9]
+[ext_resource path="res://MasterVumetre.gd" type="Script" id=10]
+[ext_resource path="res://bTtheme.tres" type="Theme" id=11]
+[ext_resource path="res://utils/play_off.png" type="Texture" id=12]
+[ext_resource path="res://utils/play_on.png" type="Texture" id=13]
+[ext_resource path="res://utils/pause_off.png" type="Texture" id=14]
+[ext_resource path="res://utils/pause_on.png" type="Texture" id=15]
+[ext_resource path="res://utils/stop_on.png" type="Texture" id=16]
+[ext_resource path="res://utils/stop_off.png" type="Texture" id=17]
+[ext_resource path="res://loopPanel.gd" type="Script" id=18]
+[ext_resource path="res://utils/Sel_file.png" type="Texture" id=19]
+[ext_resource path="res://utils/grid.png" type="Texture" id=20]
+[ext_resource path="res://Metronome.gd" type="Script" id=21]
+[ext_resource path="res://utils/tic_classic.wav" type="AudioStream" id=22]
+[ext_resource path="res://micro.gd" type="Script" id=23]
+[ext_resource path="res://master_compress.gd" type="Script" id=24]
+[ext_resource path="res://body theme.tres" type="Theme" id=25]
+
+[sub_resource type="AudioStreamMicrophone" id=1]
+
+[node name="main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.62485
+margin_top = -5.57131
+margin_right = 2.62488
+margin_bottom = -5.57129
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="head" type="Control" parent="."]
+anchor_right = 1.0
+margin_top = -1.0
+margin_right = 6.0
+margin_bottom = 43.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="head"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -111.0
+margin_top = -15.0
+margin_right = -6.0
+margin_bottom = 14.0
+
+[node name="quit" type="Button" parent="head/Control"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -41.0
+margin_top = -16.5
+margin_right = -3.0
+margin_bottom = 16.5
+text = "X"
+
+[node name="edit" type="Button" parent="head/Control"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -0.869201
+margin_top = -16.2965
+margin_right = 58.1308
+margin_bottom = 16.7035
+text = "edit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="body" type="Control" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 1.0
+margin_top = -259.0
+margin_right = 1.0
+margin_bottom = 188.0
+theme = ExtResource( 25 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="File_rep" type="Tree" parent="body"]
+anchor_top = 0.128
+anchor_bottom = 0.128
+margin_left = 0.496413
+margin_top = -0.135001
+margin_right = 127.496
+margin_bottom = 348.865
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="selfile" type="TextureRect" parent="body"]
+visible = false
+anchor_left = -0.112118
+anchor_top = 0.0422075
+anchor_right = -0.0727628
+anchor_bottom = 0.141502
+margin_top = 2.75671e-07
+margin_right = 163.701
+margin_bottom = 159.615
+rect_scale = Vector2( 0.197546, 0.217572 )
+texture = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="sound_file" type="AudioStreamPlayer" parent="body"]
+volume_db = -10.47
+
+[node name="foot" type="Control" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -109.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="foot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.113725, 0.0901961, 0.0901961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rec_Button" type="TextureButton" parent="foot/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -47.5
+margin_right = 45.0
+margin_bottom = 49.5
+toggle_mode = true
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 1 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MasterRect" type="ColorRect" parent="foot/ColorRect"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -53.5
+margin_right = 181.0
+margin_bottom = 54.5
+mouse_filter = 2
+color = Color( 0.211765, 0.184314, 0.184314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Master_vol" type="VSlider" parent="foot/ColorRect/MasterRect"]
+margin_left = 0.950003
+margin_top = -0.950012
+margin_right = 36.95
+margin_bottom = 102.05
+theme = ExtResource( 11 )
+custom_icons/grabber_disabled = ExtResource( 5 )
+custom_icons/grabber_highlight = ExtResource( 6 )
+custom_icons/grabber = ExtResource( 5 )
+min_value = -80.0
+max_value = 25.0
+value = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="foot/ColorRect/MasterRect"]
+anchor_left = 0.46414
+anchor_top = 0.0361833
+anchor_right = 0.47514
+anchor_bottom = 1.03618
+margin_left = -52.5195
+margin_top = -0.735107
+margin_right = -35.5195
+margin_bottom = -0.735107
+text = "M
+A
+S
+T
+E
+R"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="foot/ColorRect/MasterRect"]
+margin_left = 62.0
+margin_top = 16.0
+margin_right = 84.0
+margin_bottom = 23.0
+rect_scale = Vector2( 4.39259, 10.9159 )
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vumetre" type="ColorRect" parent="foot/ColorRect/MasterRect"]
+margin_left = 62.0
+margin_top = 16.0
+margin_right = 159.0
+margin_bottom = 92.0
+color = Color( 0, 0, 0, 0.145098 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loopPanel" type="ColorRect" parent="foot/ColorRect"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -181.0
+mouse_filter = 2
+color = Color( 0.211765, 0.184314, 0.184314, 1 )
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="foot/ColorRect/loopPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 7.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "LOOP"
+
+[node name="playLoop" type="TextureButton" parent="foot/ColorRect/loopPanel"]
+anchor_left = 0.0148292
+anchor_top = 0.245041
+anchor_right = 0.253918
+anchor_bottom = 0.605703
+margin_left = 7.72998e-08
+margin_top = 5.66244e-07
+margin_right = 230.725
+margin_bottom = 232.688
+rect_scale = Vector2( 0.157938, 0.14453 )
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_disabled = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="pauseLoop" type="TextureButton" parent="foot/ColorRect/loopPanel"]
+anchor_left = 0.279
+anchor_top = 0.262075
+anchor_right = 0.518089
+anchor_bottom = 0.622737
+margin_left = 1.49012e-06
+margin_top = -1.2219e-06
+margin_right = 230.725
+margin_bottom = 232.688
+rect_scale = Vector2( 0.157938, 0.14453 )
+toggle_mode = true
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_disabled = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="stopLoop" type="TextureButton" parent="foot/ColorRect/loopPanel"]
+anchor_left = 0.547771
+anchor_top = 0.246548
+anchor_right = 0.786859
+anchor_bottom = 0.611189
+margin_left = -4.05312e-06
+margin_top = -4.02331e-07
+margin_right = 230.725
+margin_bottom = 235.255
+rect_scale = Vector2( 0.157938, 0.14453 )
+toggle_mode = true
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 16 )
+texture_disabled = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LoopTrack" type="OptionButton" parent="foot/ColorRect/loopPanel"]
+anchor_left = 0.0898576
+anchor_top = 0.703133
+anchor_right = 0.725217
+anchor_bottom = 0.895794
+margin_left = 4.47035e-07
+margin_top = 1.84774e-06
+margin_right = 2.71201e-06
+margin_bottom = -2.38419e-07
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="loopVolume" type="VSlider" parent="foot/ColorRect/loopPanel"]
+anchor_left = 0.855614
+anchor_top = 0.129478
+anchor_right = 0.944012
+anchor_bottom = 0.863423
+margin_left = -3.64706e-06
+margin_top = 1.41561e-07
+margin_right = -5.78165e-06
+margin_bottom = -1.44541e-06
+theme = ExtResource( 11 )
+min_value = -80.0
+max_value = 25.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Metronome" type="ColorRect" parent="foot/ColorRect"]
+margin_left = 178.336
+margin_top = -0.123077
+margin_right = 301.336
+margin_bottom = 108.877
+mouse_filter = 2
+color = Color( 0.121569, 0.0666667, 0.0666667, 1 )
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tempo" type="Label" parent="foot/ColorRect/Metronome"]
+margin_left = 12.9033
+margin_top = 8.13521
+margin_right = 57.9033
+margin_bottom = 22.1352
+text = "TEMPO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonMetro" type="Button" parent="foot/ColorRect/Metronome"]
+margin_left = 67.6881
+margin_top = 4.97285
+margin_right = 105.688
+margin_bottom = 24.9729
+toggle_mode = true
+text = "ON"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="foot/ColorRect/Metronome"]
+margin_left = 43.6944
+margin_top = 33.226
+margin_right = 117.694
+margin_bottom = 57.226
+min_value = 50.0
+max_value = 200.0
+value = 130.0
+
+[node name="AudioMetronome" type="AudioStreamPlayer" parent="foot/ColorRect/Metronome"]
+stream = ExtResource( 22 )
+volume_db = 1.0
+
+[node name="bpm" type="Label" parent="foot/ColorRect/Metronome"]
+margin_left = 8.23646
+margin_top = 37.4447
+margin_right = 48.2364
+margin_bottom = 51.4447
+text = "BPM"
+
+[node name="Vol_Slider_tempo" type="HSlider" parent="foot/ColorRect/Metronome"]
+margin_left = 43.5979
+margin_top = 61.3685
+margin_right = 104.598
+margin_bottom = 77.3685
+theme = ExtResource( 11 )
+min_value = -20.0
+max_value = 24.0
+
+[node name="vol" type="Label" parent="foot/ColorRect/Metronome"]
+margin_left = 11.3761
+margin_top = 63.4732
+margin_right = 51.3761
+margin_bottom = 77.4732
+text = "VOL"
+
+[node name="sound" type="Button" parent="foot/ColorRect/Metronome"]
+margin_left = 45.9453
+margin_top = 84.3558
+margin_right = 100.945
+margin_bottom = 104.356
+toggle_mode = true
+text = "classic"
+
+[node name="type" type="Label" parent="foot/ColorRect/Metronome"]
+margin_left = 9.63025
+margin_top = 87.2605
+margin_right = 41.6302
+margin_bottom = 101.26
+text = "TYPE"
+
+[node name="micro" type="ColorRect" parent="foot/ColorRect"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -306.0
+margin_top = -1.0
+margin_right = -180.0
+margin_bottom = 6.0
+rect_pivot_offset = Vector2( 1074.34, -452.797 )
+mouse_filter = 2
+color = Color( 0.121569, 0.0666667, 0.0666667, 1 )
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MICRO" type="Label" parent="foot/ColorRect/micro"]
+margin_left = 10.833
+margin_top = 10.833
+margin_right = 54.833
+margin_bottom = 24.833
+text = "MICRO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioMicro" type="AudioStreamPlayer" parent="foot/ColorRect/micro"]
+stream = SubResource( 1 )
+volume_db = 11.866
+bus = "record"
+
+[node name="ButtonMicro" type="Button" parent="foot/ColorRect/micro"]
+margin_left = 68.867
+margin_top = 9.28543
+margin_right = 95.867
+margin_bottom = 29.2854
+toggle_mode = true
+text = "on"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vol_mic_Slider" type="HSlider" parent="foot/ColorRect/micro"]
+margin_left = 47.0629
+margin_top = 40.4772
+margin_right = 110.063
+margin_bottom = 56.4772
+theme = ExtResource( 11 )
+min_value = -40.0
+max_value = 20.0
+value = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="foot/ColorRect/micro"]
+margin_left = 11.0
+margin_top = 40.0
+margin_right = 38.0
+margin_bottom = 54.0
+text = "VOL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="micro_effect_Panel" type="WindowDialog" parent="foot/ColorRect/micro"]
+anchor_left = 0.922063
+anchor_top = 0.506724
+anchor_right = 0.922064
+anchor_bottom = 0.506724
+margin_left = -372.18
+margin_top = -222.78
+margin_right = -15.18
+margin_bottom = -16.78
+popup_exclusive = true
+window_title = "effects"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="delay" type="Label" parent="foot/ColorRect/micro/micro_effect_Panel"]
+anchor_top = 0.00432416
+anchor_bottom = 0.00432416
+margin_left = 13.0
+margin_top = 19.0
+margin_right = 58.0
+margin_bottom = 36.0
+text = "DELAY"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button_delay_on" type="Button" parent="foot/ColorRect/micro/micro_effect_Panel"]
+margin_left = 65.975
+margin_top = 15.4756
+margin_right = 100.975
+margin_bottom = 35.4756
+toggle_mode = true
+text = "on"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="delay_time" type="Label" parent="foot/ColorRect/micro/micro_effect_Panel"]
+margin_left = 9.39508
+margin_top = 42.0114
+margin_right = 52.3951
+margin_bottom = 56.0114
+text = "TIME 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="delay_time2" type="Label" parent="foot/ColorRect/micro/micro_effect_Panel"]
+margin_left = 8.31433
+margin_top = 70.6505
+margin_right = 51.3143
+margin_bottom = 84.6505
+text = "TIME 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feed_time" type="Label" parent="foot/ColorRect/micro/micro_effect_Panel"]
+margin_left = 9.93542
+margin_top = 124.146
+margin_right = 52.9354
+margin_bottom = 138.146
+text = "TIME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="foot/ColorRect/micro/micro_effect_Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.715
+margin_top = -163.285
+margin_right = -218.715
+margin_bottom = -147.285
+theme = ExtResource( 11 )
+max_value = 800.0
+value = 350.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider2" type="HSlider" parent="foot/ColorRect/micro/micro_effect_Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -298.553
+margin_top = -138.429
+margin_right = -216.553
+margin_bottom = -122.429
+theme = ExtResource( 11 )
+max_value = 800.0
+value = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Check_feedback" type="CheckBox" parent="foot/ColorRect/micro/micro_effect_Panel"]
+margin_left = 99.7556
+margin_top = 98.2243
+margin_right = 123.756
+margin_bottom = 122.224
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feedback" type="Label" parent="foot/ColorRect/micro/micro_effect_Panel"]
+margin_left = 15.5088
+margin_top = 104.153
+margin_right = 80.5088
+margin_bottom = 118.153
+text = "FEEDBACK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider3" type="HSlider" parent="foot/ColorRect/micro/micro_effect_Panel"]
+margin_left = 53.5403
+margin_top = 123.298
+margin_right = 136.54
+margin_bottom = 139.298
+theme = ExtResource( 11 )
+max_value = 800.0
+value = 340.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="effect_bt" type="Button" parent="foot/ColorRect/micro"]
+margin_left = 51.0
+margin_top = 65.0
+margin_right = 109.0
+margin_bottom = 85.0
+toggle_mode = true
+text = "EFFECT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="master_compress" type="ColorRect" parent="foot/ColorRect"]
+margin_left = 301.0
+margin_right = 453.0
+margin_bottom = 109.0
+mouse_filter = 2
+color = Color( 0.129412, 0.0196078, 0.160784, 1 )
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Labelon" type="Label" parent="foot/ColorRect/master_compress"]
+margin_left = 13.1722
+margin_top = 8.98105
+margin_right = 74.1722
+margin_bottom = 22.981
+text = "COMPRES"
+
+[node name="compress_on" type="Button" parent="foot/ColorRect/master_compress"]
+margin_left = 103.19
+margin_top = 6.26007
+margin_right = 135.19
+margin_bottom = 26.2601
+toggle_mode = true
+text = "on"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider_gain" type="HSlider" parent="foot/ColorRect/master_compress"]
+margin_left = 64.2609
+margin_top = 35.4619
+margin_right = 136.261
+margin_bottom = 51.4619
+theme = ExtResource( 11 )
+min_value = -20.0
+max_value = 20.0
+
+[node name="Labelgain" type="Label" parent="foot/ColorRect/master_compress"]
+margin_left = 7.18491
+margin_top = 35.9243
+margin_right = 47.1849
+margin_bottom = 49.9243
+text = "GAIN"
+
+[node name="Labelmix" type="Label" parent="foot/ColorRect/master_compress"]
+margin_left = 9.57983
+margin_top = 88.0146
+margin_right = 49.5798
+margin_bottom = 102.015
+text = "MIX"
+
+[node name="HSlider_mix" type="HSlider" parent="foot/ColorRect/master_compress"]
+margin_left = 58.5995
+margin_top = 84.0131
+margin_right = 135.599
+margin_bottom = 100.013
+theme = ExtResource( 11 )
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="foot/ColorRect/master_compress"]
+margin_left = 7.29767
+margin_top = 59.708
+margin_right = 55.2977
+margin_bottom = 73.708
+text = "ATTACK"
+
+[node name="HSlider" type="HSlider" parent="foot/ColorRect/master_compress"]
+margin_left = 64.0
+margin_top = 58.0
+margin_right = 137.0
+margin_bottom = 74.0
+theme = ExtResource( 11 )
+max_value = 2000.0
+value = 20.0
+
+[node name="PopupPanel" type="WindowDialog" parent="."]
+modulate = Color( 0.615686, 0.662745, 0.745098, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -430.058
+margin_top = -267.851
+margin_right = 589.942
+margin_bottom = 182.149
+rect_scale = Vector2( 0.802884, 0.951049 )
+popup_exclusive = true
+window_title = "setting"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="PopupPanel"]
+anchor_left = 0.425
+anchor_top = 0.906045
+anchor_right = 0.504
+anchor_bottom = 0.975
+margin_left = -0.127502
+margin_top = -0.804199
+margin_right = 0.292725
+margin_bottom = 0.165985
+text = "exit"
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="general" type="Label" parent="PopupPanel"]
+margin_left = 23.6647
+margin_top = 19.9779
+margin_right = 81.6647
+margin_bottom = 33.9779
+rect_scale = Vector2( 2.42857, 1.57143 )
+text = "GENERAL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="controlleurLabel" type="Label" parent="PopupPanel"]
+margin_left = 750.0
+margin_top = 33.0
+margin_right = 854.0
+margin_bottom = 49.0
+rect_scale = Vector2( 1.59016, 1.72414 )
+text = "CONTROLLEUR"
+
+[node name="controlleurName" type="Label" parent="PopupPanel"]
+margin_left = 775.953
+margin_top = 72.5515
+margin_right = 815.953
+margin_bottom = 86.5515
+rect_scale = Vector2( 2.03333, 1.22222 )
+text = "none"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="PopupPanel"]
+margin_left = 293.409
+margin_top = 86.2716
+margin_right = 704.409
+margin_bottom = 310.272
+rect_scale = Vector2( 1.10493, 1.31816 )
+window_title = "Ouvrir un répertoire"
+resizable = true
+dialog_text = "record save path"
+dialog_hide_on_ok = true
+mode = 2
+access = 2
+current_dir = "E:/godot/trunk zik"
+current_path = "E:/godot/trunk zik/"
+
+[node name="output_change" type="Button" parent="PopupPanel"]
+margin_left = 31.9473
+margin_top = 340.624
+margin_right = 97.9473
+margin_bottom = 360.624
+text = "CHANGE"
+
+[node name="output_dir" type="Label" parent="PopupPanel"]
+margin_left = 37.8635
+margin_top = 313.654
+margin_right = 77.8635
+margin_bottom = 327.654
+text = "output folder:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pad_Number_opt" type="OptionButton" parent="PopupPanel"]
+margin_left = 736.954
+margin_top = 114.176
+margin_right = 936.954
+margin_bottom = 154.176
+shortcut_in_tooltip = false
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bank" type="OptionButton" parent="PopupPanel"]
+margin_left = 877.189
+margin_top = 176.887
+margin_right = 938.189
+margin_bottom = 199.887
+text = "none"
+
+[node name="bank_label" type="Label" parent="PopupPanel"]
+margin_left = 768.799
+margin_top = 181.391
+margin_right = 866.799
+margin_bottom = 196.391
+text = "BANK number :"
+
+[node name="Audio_out" type="AudioStreamPlayer" parent="."]
+[connection signal="pressed" from="head/Control/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="head/Control/edit" to="." method="_on_edit_pressed"]
+[connection signal="cell_selected" from="body/File_rep" to="body" method="_on_File_rep_cell_selected"]
+[connection signal="toggled" from="foot/ColorRect/Rec_Button" to="foot/ColorRect/Rec_Button" method="_on_Rec_Button_toggled"]
+[connection signal="value_changed" from="foot/ColorRect/MasterRect/Master_vol" to="." method="_on_VSlider_value_changed"]
+[connection signal="pressed" from="foot/ColorRect/loopPanel/playLoop" to="foot/ColorRect/loopPanel" method="_on_playLoop_pressed"]
+[connection signal="pressed" from="foot/ColorRect/loopPanel/pauseLoop" to="foot/ColorRect/loopPanel" method="_on_pauseLoop_pressed"]
+[connection signal="pressed" from="foot/ColorRect/loopPanel/stopLoop" to="foot/ColorRect/loopPanel" method="_on_stopLoop_pressed"]
+[connection signal="item_selected" from="foot/ColorRect/loopPanel/LoopTrack" to="foot/ColorRect/loopPanel" method="_on_LoopTrack_item_selected"]
+[connection signal="value_changed" from="foot/ColorRect/loopPanel/loopVolume" to="foot/ColorRect/loopPanel" method="_on_loopVolume_value_changed"]
+[connection signal="value_changed" from="foot/ColorRect/Metronome/SpinBox" to="foot/ColorRect/Metronome" method="_on_SpinBox_value_changed"]
+[connection signal="value_changed" from="foot/ColorRect/Metronome/Vol_Slider_tempo" to="foot/ColorRect/Metronome" method="_on_Vol_Slider_tempo_value_changed"]
+[connection signal="toggled" from="foot/ColorRect/Metronome/sound" to="foot/ColorRect/Metronome" method="_on_Button_toggled"]
+[connection signal="toggled" from="foot/ColorRect/micro/ButtonMicro" to="foot/ColorRect/micro" method="_on_ButtonMicro_toggled"]
+[connection signal="value_changed" from="foot/ColorRect/micro/Vol_mic_Slider" to="foot/ColorRect/micro" method="_on_Vol_mic_Slider_value_changed"]
+[connection signal="modal_closed" from="foot/ColorRect/micro/micro_effect_Panel" to="foot/ColorRect/micro" method="_on_micro_effect_Panel_modal_closed"]
+[connection signal="toggled" from="foot/ColorRect/micro/micro_effect_Panel/Button_delay_on" to="foot/ColorRect/micro" method="_on_Button_delay_on_toggled"]
+[connection signal="value_changed" from="foot/ColorRect/micro/micro_effect_Panel/HSlider" to="foot/ColorRect/micro" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="foot/ColorRect/micro/micro_effect_Panel/HSlider2" to="foot/ColorRect/micro" method="_on_HSlider2_value_changed"]
+[connection signal="toggled" from="foot/ColorRect/micro/micro_effect_Panel/Check_feedback" to="foot/ColorRect/micro" method="_on_Check_feedback_toggled"]
+[connection signal="value_changed" from="foot/ColorRect/micro/micro_effect_Panel/HSlider3" to="foot/ColorRect/micro" method="_on_HSlider3_value_changed"]
+[connection signal="toggled" from="foot/ColorRect/micro/effect_bt" to="foot/ColorRect/micro" method="_on_Button_toggled"]
+[connection signal="toggled" from="foot/ColorRect/master_compress/compress_on" to="foot/ColorRect/master_compress" method="_on_compress_on_toggled"]
+[connection signal="value_changed" from="foot/ColorRect/master_compress/HSlider_gain" to="foot/ColorRect/master_compress" method="_on_HSlider_gain_value_changed"]
+[connection signal="value_changed" from="foot/ColorRect/master_compress/HSlider_mix" to="foot/ColorRect/master_compress" method="_on_HSlider_mix_value_changed"]
+[connection signal="value_changed" from="foot/ColorRect/master_compress/HSlider" to="foot/ColorRect/master_compress" method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="PopupPanel/exit" to="." method="_on_exit_pressed"]
+[connection signal="dir_selected" from="PopupPanel/FileDialog" to="PopupPanel" method="_on_FileDialog_dir_selected"]
+[connection signal="pressed" from="PopupPanel/output_change" to="PopupPanel" method="_on_output_change_pressed"]
+[connection signal="item_selected" from="PopupPanel/Pad_Number_opt" to="PopupPanel" method="_on_Pad_Number_opt_item_selected"]

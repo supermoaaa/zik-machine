@@ -1,0 +1,239 @@
+extends Control
+
+
+# Declare member variables here. Examples:
+var conf_file = "res://conf.cfg"
+var midi_map = []
+var PATH = "res://sample/"
+
+var drag_file = false
+var list_file = {}
+var Master_vol_midi = 13
+
+func get_filelist(scan_dir : String) -> Array:
+	var my_files : Array = []
+	var dir := Directory.new()
+	if dir.open(scan_dir) != OK:
+		printerr("Warning: could not open directory: ", scan_dir)
+		return []
+	
+	if dir.list_dir_begin(true, true) != OK:
+		printerr("Warning: could not list contents of: ", scan_dir)
+		return []
+	
+	var file_name := dir.get_next()
+	while file_name != "":
+		if dir.current_is_dir():
+			my_files += get_filelist(dir.get_current_dir() + "/" + file_name)
+		else:
+			if file_name.get_extension () == "wav":
+				my_files.append(dir.get_current_dir() + "/" + file_name)
+	
+		file_name = dir.get_next()
+	
+	return my_files
+	
+func load_wav_file():
+	var file_rep = get_node("File_rep")
+	var root = file_rep.create_item()
+	root.set_text(0, "file")
+	
+	for rep in get_filelist(PATH):
+		var start_rep = file_rep.create_item(root)
+		start_rep.set_text(0, str(rep.get_file ()))
+		list_file[rep.get_file ()] = rep
+
+func _process(_delta):
+	if (Input.is_mouse_button_pressed(BUTTON_LEFT)):
+		if drag_file == true:
+			$selfile.set_position(get_local_mouse_position())
+	else:
+		$selfile.visible = false
+		drag_file = false
+	pass
+
+
+func _ready():
+	load_wav_file() 
+	var pad_name = 0
+	var configFile = ConfigFile.new()
+	configFile.load(conf_file)
+	var conf_machine = configFile.get_value("MACHINE", "active_machine")
+	#print(str(conf_machine))
+	configFile.load(conf_machine)
+	var pad_number = configFile.get_value("PAD CONF", "PAD_number")
+	var audio_set = configFile.get_value("PAD CONF", "audio_set")
+	midi_map = configFile.get_value("PAD CONF", "midi_set")
+	Master_vol_midi = configFile.get_value("PAD CONF", "midi_master")
+	#print(audio_set)
+
+	for pad in pad_number:
+		var pad_button = Button.new()
+		pad_button.margin_top = OS.get_screen_size().y/2 - (pad_number*4)
+		pad_button.margin_bottom = OS.get_screen_size().y/2 + (pad_number)
+		pad_button.margin_left = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3))
+		pad_button.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.8))
+		pad_button.name = "pad" + str(pad_name)
+		pad_button.text = audio_set[pad_name].get_file ().left ( 6 )
+		pad_button.connect("button_down", self, "pad_press", [pad_name])
+		pad_button.connect("mouse_entered", self, "pad_change_sample", [pad_name])
+		self.add_child(pad_button)
+
+		var mute_button = TextureButton.new()
+		mute_button.margin_top = OS.get_screen_size().y/2 + (pad_number*3)
+		mute_button.margin_bottom = OS.get_screen_size().y/2 + (pad_number*5)
+		mute_button.margin_left = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3))
+		mute_button.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.8))
+		mute_button.name = "mute" + str(pad_name)
+
+		mute_button.texture_normal = load("res://utils/bt_off.png")
+		mute_button.texture_hover = load("res://utils/bt_over.png")
+		mute_button.texture_pressed = load("res://utils/bt_on.png")
+		mute_button.expand = true
+		mute_button.toggle_mode = true
+		
+		var mute_text = Label.new()
+		mute_text.text = "mute"
+		#mute_text.has_color(black, "")
+		mute_text.margin_left = 15
+		mute_text.align = 2
+		mute_text.valign = 1
+		self.add_child(mute_button)
+		mute_button.add_child(mute_text)
+
+		var vel_button = TextureButton.new()
+		vel_button.margin_top = OS.get_screen_size().y/2 + (pad_number*5)
+		vel_button.margin_bottom = OS.get_screen_size().y/2 + (pad_number*7.5)
+		vel_button.margin_left = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3))
+		vel_button.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.8))
+		vel_button.name = "vel" + str(pad_name)
+		vel_button.texture_normal = load("res://utils/bt_off.png")
+		vel_button.texture_hover = load("res://utils/bt_over.png")
+		vel_button.texture_pressed = load("res://utils/bt_on.png")
+		vel_button.expand = true
+		vel_button.toggle_mode = true
+		
+		var vel_text = Label.new()
+		vel_text.text = "vel to vol"
+		
+		vel_text.margin_left = 5
+		vel_text.margin_top = 3
+		vel_text.align = 2
+		vel_text.valign = 1
+		self.add_child(vel_button)
+		vel_button.add_child(vel_text)
+
+
+		
+		var pad_volume = VSlider.new()
+		pad_volume.margin_top = OS.get_screen_size().y/2 - (pad_number*20)
+		pad_volume.margin_bottom = OS.get_screen_size().y/2 - (pad_number*6)
+		pad_volume.margin_left = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.3))
+		pad_volume.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.5))
+		pad_volume.name = "volume" + str(pad_name)
+		pad_volume.max_value = 25
+		pad_volume.min_value = -80
+		pad_volume.value = -15
+		pad_volume.connect("value_changed", self, "volume_change", [str(pad_name)])
+		self.add_child(pad_volume)
+		
+		var play_instance = AudioStreamPlayer.new()
+		play_instance.name = "play_instance" + str(pad_name)
+		play_instance.stream = load(audio_set[pad_name])
+		play_instance.volume_db = -15
+		play_instance.add_to_group("song")
+		self.add_child(play_instance)
+		pad_name += 1
+		pass
+		
+enum GlobalScope_MidiMessageList {
+	MIDI_MESSAGE_NOTE_OFF = 0x8,
+	MIDI_MESSAGE_NOTE_ON = 0x9,
+	MIDI_MESSAGE_AFTERTOUCH = 0xA,
+	MIDI_MESSAGE_CONTROL_CHANGE = 0xB,
+	MIDI_MESSAGE_PROGRAM_CHANGE = 0xC,
+	MIDI_MESSAGE_CHANNEL_PRESSURE = 0xD,
+	MIDI_MESSAGE_PITCH_BEND = 0xE,
+};
+
+func get_midi_message_description(event : InputEventMIDI):
+
+	if GlobalScope_MidiMessageList.values().has(event.message):
+		return GlobalScope_MidiMessageList.keys()[event.message - 0x08]
+	return(event.message)
+
+
+func _unhandled_input(event : InputEvent):
+	#var event_dump : String = ""
+
+	if (event is InputEventMIDI):
+		#event_dump = "event: {0}\n".format([get_midi_message_description(event)])
+		#event_dump = "chn: {channel} msg: {message}\n".format({"channel": event.channel, "message": event.message})
+		#event_dump = "  pitch: {pitch} vel: {velocity}\n".format({"pitch": event.pitch, "velocity": event.velocity})
+		#print(event)
+		var key_index = event.pitch
+		var key_vel = event.velocity
+		print(key_vel)
+		print(event.controller_number)
+		if key_index in midi_map:
+			print("key=" + str(midi_map.find(key_index)))
+			var active_PAD = "pad" + str(midi_map.find(key_index))
+			var active_vel = "vel" + str(midi_map.find(key_index))
+
+			if get_node(active_vel).pressed == true:
+				# not good 
+				get_node("play_instance" + str(midi_map.find(key_index))).volume_db = (key_vel * 0.67) - 70
+				get_node("volume" + str(midi_map.find(key_index))).value = (key_vel * 0.67) - 70
+
+			match event.message:
+				MIDI_MESSAGE_NOTE_ON:
+					var input_event = InputEventMouseButton.new()
+					input_event.pressed = true
+					input_event.button_index = BUTTON_LEFT
+					input_event.position = get_node(active_PAD).rect_global_position
+					get_tree().input_event(input_event)
+
+
+				MIDI_MESSAGE_NOTE_OFF:
+					var input_event = InputEventMouseButton.new()
+					input_event.pressed = false
+					input_event.button_index = BUTTON_LEFT
+					input_event.position = get_node(active_PAD).rect_global_position
+					get_tree().input_event(input_event)
+
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+func pad_press(pad_name):
+	#print(pad_name)
+	var active_node = "play_instance" + str(pad_name)
+	var active_stream = get_node(active_node)
+	var active_mute = get_node("mute"+ str(pad_name))
+	if active_mute.pressed == false :
+		active_stream.play()
+	#print(str(active_stream) +"audio")
+
+func pad_change_sample(pad_name):
+	if drag_file == true:
+		var sel_file_name = get_node("File_rep").get_selected().get_text(0)
+		drag_file = false
+		$selfile.visible = false
+		var active_node = "pad" + str(pad_name)
+		get_node(active_node).text = sel_file_name.left ( 6 )
+		#print(list_file[sel_file_name])
+		get_node("play_instance"+str(pad_name)).stream = load(list_file[sel_file_name])
+
+func volume_change(volume, number):
+	get_node("play_instance" + str(number)).volume_db = volume
+
+
+
+func _on_File_rep_cell_selected():
+	$sound_file.stream = load(list_file[get_node("File_rep").get_selected().get_text(0)])
+	$sound_file.play()
+	$selfile.set_position(get_local_mouse_position())
+	$selfile.visible = true
+	drag_file = true
