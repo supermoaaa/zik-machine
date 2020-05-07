@@ -138,6 +138,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="foot"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = 7.0
 mouse_filter = 2
 color = Color( 0.113725, 0.0901961, 0.0901961, 1 )
 __meta__ = {
@@ -166,9 +167,9 @@ __meta__ = {
 [node name="MasterRect" type="ColorRect" parent="foot/ColorRect"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_top = -53.5
-margin_right = 181.0
-margin_bottom = 54.5
+margin_top = -58.0
+margin_right = 179.0
+margin_bottom = 57.0
 mouse_filter = 2
 color = Color( 0.211765, 0.184314, 0.184314, 1 )
 __meta__ = {
@@ -340,10 +341,9 @@ __meta__ = {
 }
 
 [node name="Metronome" type="ColorRect" parent="foot/ColorRect"]
-margin_left = 178.336
-margin_top = -0.123077
-margin_right = 301.336
-margin_bottom = 108.877
+margin_left = 178.0
+margin_right = 301.0
+margin_bottom = 114.0
 mouse_filter = 2
 color = Color( 0.121569, 0.0666667, 0.0666667, 1 )
 script = ExtResource( 21 )
@@ -430,7 +430,6 @@ anchor_bottom = 1.0
 margin_left = -306.0
 margin_top = -1.0
 margin_right = -180.0
-margin_bottom = 6.0
 rect_pivot_offset = Vector2( 1074.34, -452.797 )
 mouse_filter = 2
 color = Color( 0.121569, 0.0666667, 0.0666667, 1 )
@@ -633,7 +632,7 @@ __meta__ = {
 [node name="master_compress" type="ColorRect" parent="foot/ColorRect"]
 margin_left = 301.0
 margin_right = 453.0
-margin_bottom = 109.0
+margin_bottom = 114.0
 mouse_filter = 2
 color = Color( 0.129412, 0.0196078, 0.160784, 1 )
 script = ExtResource( 24 )
