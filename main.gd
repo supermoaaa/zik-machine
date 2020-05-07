@@ -8,7 +8,7 @@ var Loop_vol_midi = 15
 
 
 func _ready():
-	var list_machine
+	var list_machine = ["XPAD", "xpad2"]
 	OS.open_midi_inputs()
 	for current_midi_input in OS.get_connected_midi_inputs():
 		if current_midi_input in list_machine:
