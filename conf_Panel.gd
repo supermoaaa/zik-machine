@@ -41,7 +41,7 @@ func _ready():
 	for current_midi_input in OS.get_connected_midi_inputs():
 		$controlleurName.text = current_midi_input
 		#$savepreset.current_file = current_midi_input + ".cfg"
-
+	OS.close_midi_inputs()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
