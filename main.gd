@@ -5,10 +5,27 @@ var conf_menu
 var Master_vol_midi = 14
 var Loop_vol_midi = 15
 
+func get_conf_list(path):
+	var files = []
+	var dir = Directory.new()
+	dir.open(path)
+	dir.list_dir_begin()
 
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		elif not file.begins_with("."):
+			files.append(str(file).get_basename ())
+
+	dir.list_dir_end()
+
+	return files
 
 func _ready():
-	var list_machine = ["XPAD", "xpad2"]
+	
+	var list_machine = get_conf_list("res://model/")
+	print(list_machine)
 	OS.open_midi_inputs()
 	for current_midi_input in OS.get_connected_midi_inputs():
 		if current_midi_input in list_machine:
