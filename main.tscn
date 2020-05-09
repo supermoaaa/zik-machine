@@ -181,7 +181,7 @@ margin_left = 0.950003
 margin_top = -0.950012
 margin_right = 36.95
 margin_bottom = 102.05
-theme = ExtResource( 11 )
+theme = ExtResource( 25 )
 custom_icons/grabber_disabled = ExtResource( 5 )
 custom_icons/grabber_highlight = ExtResource( 6 )
 custom_icons/grabber = ExtResource( 5 )
@@ -276,10 +276,10 @@ __meta__ = {
 }
 
 [node name="pauseLoop" type="TextureButton" parent="foot/ColorRect/loopPanel"]
-anchor_left = 0.279
-anchor_top = 0.262075
-anchor_right = 0.518089
-anchor_bottom = 0.622737
+anchor_left = 0.262461
+anchor_top = 0.256914
+anchor_right = 0.50155
+anchor_bottom = 0.617576
 margin_left = 1.49012e-06
 margin_top = -1.2219e-06
 margin_right = 230.725
@@ -294,10 +294,10 @@ __meta__ = {
 }
 
 [node name="stopLoop" type="TextureButton" parent="foot/ColorRect/loopPanel"]
-anchor_left = 0.547771
-anchor_top = 0.246548
-anchor_right = 0.786859
-anchor_bottom = 0.611189
+anchor_left = 0.514692
+anchor_top = 0.251709
+anchor_right = 0.75378
+anchor_bottom = 0.61635
 margin_left = -4.05312e-06
 margin_top = -4.02331e-07
 margin_right = 230.725
@@ -312,10 +312,10 @@ __meta__ = {
 }
 
 [node name="LoopTrack" type="OptionButton" parent="foot/ColorRect/loopPanel"]
-anchor_left = 0.0898576
-anchor_top = 0.703133
-anchor_right = 0.725217
-anchor_bottom = 0.895794
+anchor_left = 0.0600863
+anchor_top = 0.697972
+anchor_right = 0.695446
+anchor_bottom = 0.890633
 margin_left = 4.47035e-07
 margin_top = 1.84774e-06
 margin_right = 2.71201e-06
@@ -325,20 +325,30 @@ __meta__ = {
 }
 
 [node name="loopVolume" type="VSlider" parent="foot/ColorRect/loopPanel"]
-anchor_left = 0.855614
-anchor_top = 0.129478
-anchor_right = 0.944012
-anchor_bottom = 0.863423
+anchor_left = 0.868846
+anchor_top = 0.124316
+anchor_right = 0.957244
+anchor_bottom = 0.858261
 margin_left = -3.64706e-06
 margin_top = 1.41561e-07
 margin_right = -5.78165e-06
 margin_bottom = -1.44541e-06
-theme = ExtResource( 11 )
+theme = ExtResource( 25 )
 min_value = -80.0
 max_value = 25.0
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="Label2" type="Label" parent="foot/ColorRect/loopPanel"]
+margin_left = 142.204
+margin_top = 30.395
+margin_right = 154.204
+margin_bottom = 95.395
+text = "V
+O
+L
+"
 
 [node name="Metronome" type="ColorRect" parent="foot/ColorRect"]
 margin_left = 178.0
@@ -397,7 +407,7 @@ margin_left = 43.5979
 margin_top = 61.3685
 margin_right = 104.598
 margin_bottom = 77.3685
-theme = ExtResource( 11 )
+theme = ExtResource( 25 )
 min_value = -20.0
 max_value = 24.0
 
@@ -469,7 +479,7 @@ margin_left = 47.0629
 margin_top = 40.4772
 margin_right = 110.063
 margin_bottom = 56.4772
-theme = ExtResource( 11 )
+theme = ExtResource( 25 )
 min_value = -40.0
 max_value = 20.0
 value = -5.0
@@ -663,7 +673,7 @@ margin_left = 64.2609
 margin_top = 35.4619
 margin_right = 136.261
 margin_bottom = 51.4619
-theme = ExtResource( 11 )
+theme = ExtResource( 25 )
 min_value = -20.0
 max_value = 20.0
 
@@ -686,7 +696,7 @@ margin_left = 58.5995
 margin_top = 84.0131
 margin_right = 135.599
 margin_bottom = 100.013
-theme = ExtResource( 11 )
+theme = ExtResource( 25 )
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -703,7 +713,7 @@ margin_left = 64.0
 margin_top = 58.0
 margin_right = 137.0
 margin_bottom = 74.0
-theme = ExtResource( 11 )
+theme = ExtResource( 25 )
 max_value = 2000.0
 value = 20.0
 
