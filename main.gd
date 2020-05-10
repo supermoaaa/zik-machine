@@ -30,7 +30,8 @@ func _ready():
 	for current_midi_input in OS.get_connected_midi_inputs():
 		if current_midi_input in list_machine:
 			print(current_midi_input)
-	
+		elif current_midi_input == "none":
+			print("error can't detect pad connetion")
 	#var songs = get_tree().get_nodes_in_group("song")
 	#for song in songs:
 		#print(song.get_stream())
