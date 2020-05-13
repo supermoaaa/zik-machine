@@ -28,11 +28,14 @@ func _ready():
 	print(list_machine)
 	OS.open_midi_inputs()
 	for current_midi_input in OS.get_connected_midi_inputs():
+		print(current_midi_input)
 		if current_midi_input in list_machine:
 			print(current_midi_input)
-		elif current_midi_input == "none":
-			print("error can't detect pad connetion")
-	#var songs = get_tree().get_nodes_in_group("song")
+			
+	if OS.get_connected_midi_inputs().empty() == true:
+		print("no detected")
+		$noMidi.show()
+
 	#for song in songs:
 		#print(song.get_stream())
 
@@ -84,3 +87,7 @@ func _unhandled_input(event : InputEvent):
 
 			get_node("foot/ColorRect/loopPanel/loop_stream").volume_db = (event.controller_value *0.78)-80
 			get_node("foot/ColorRect/loopPanel/loopVolume").value = (event.controller_value *0.78)-80
+
+
+func _on_Timer_timeout():
+	$noMidi.hide()

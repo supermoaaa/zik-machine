@@ -838,6 +838,32 @@ margin_bottom = 196.391
 text = "BANK number :"
 
 [node name="Audio_out" type="AudioStreamPlayer" parent="."]
+
+[node name="noMidi" type="PopupPanel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -59.0
+margin_right = 141.0
+margin_bottom = 59.0
+
+[node name="Label" type="Label" parent="noMidi"]
+margin_right = 259.0
+margin_bottom = 112.0
+theme = ExtResource( 11 )
+text = "Attention
+midi pad no detected 
+plug it before start zik machine
+"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Timer" type="Timer" parent="noMidi"]
+wait_time = 7.0
+autostart = true
 [connection signal="pressed" from="head/Control/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="head/Control/edit" to="." method="_on_edit_pressed"]
 [connection signal="cell_selected" from="body/File_rep" to="body" method="_on_File_rep_cell_selected"]
@@ -868,3 +894,4 @@ text = "BANK number :"
 [connection signal="dir_selected" from="PopupPanel/FileDialog" to="PopupPanel" method="_on_FileDialog_dir_selected"]
 [connection signal="pressed" from="PopupPanel/output_change" to="PopupPanel" method="_on_output_change_pressed"]
 [connection signal="item_selected" from="PopupPanel/Pad_Number_opt" to="PopupPanel" method="_on_Pad_Number_opt_item_selected"]
+[connection signal="timeout" from="noMidi/Timer" to="." method="_on_Timer_timeout"]
