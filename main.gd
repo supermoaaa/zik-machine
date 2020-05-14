@@ -25,7 +25,7 @@ func get_conf_list(path):
 func _ready():
 	
 	var list_machine = get_conf_list("res://model/")
-	print(list_machine)
+
 	OS.open_midi_inputs()
 	for current_midi_input in OS.get_connected_midi_inputs():
 		print(current_midi_input)
@@ -36,16 +36,12 @@ func _ready():
 		print("no detected")
 		$noMidi.show()
 
-	#for song in songs:
-		#print(song.get_stream())
 
-	pass
 
 
 func _on_edit_pressed():
 	$PopupPanel.show()
 
-	pass # Replace with function body.
 
 
 func _on_exit_pressed():
@@ -88,6 +84,6 @@ func _unhandled_input(event : InputEvent):
 			get_node("foot/ColorRect/loopPanel/loop_stream").volume_db = (event.controller_value *0.78)-80
 			get_node("foot/ColorRect/loopPanel/loopVolume").value = (event.controller_value *0.78)-80
 
-
+# end of midi message
 func _on_Timer_timeout():
 	$noMidi.hide()
