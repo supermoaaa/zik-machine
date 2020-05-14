@@ -104,6 +104,7 @@ margin_left = 0.496413
 margin_top = -0.135001
 margin_right = 127.496
 margin_bottom = 348.865
+allow_reselect = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -850,8 +851,10 @@ margin_right = 141.0
 margin_bottom = 59.0
 
 [node name="Label" type="Label" parent="noMidi"]
-margin_right = 259.0
-margin_bottom = 112.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 257.0
+margin_bottom = 114.0
 theme = ExtResource( 11 )
 text = "Attention
 midi pad no detected 
