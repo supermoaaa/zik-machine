@@ -865,7 +865,7 @@ valign = 1
 uppercase = true
 
 [node name="Timer" type="Timer" parent="noMidi"]
-wait_time = 7.0
+wait_time = 5.0
 autostart = true
 [connection signal="pressed" from="head/Control/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="head/Control/edit" to="." method="_on_edit_pressed"]

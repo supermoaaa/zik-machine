@@ -164,7 +164,6 @@ func get_midi_message_description(event : InputEventMIDI):
 
 
 func _unhandled_input(event : InputEvent):
-	#var event_dump : String = ""
 
 	if (event is InputEventMIDI):
 		#event_dump = "event: {0}\n".format([get_midi_message_description(event)])
@@ -173,7 +172,7 @@ func _unhandled_input(event : InputEvent):
 		#print(event)
 		var key_index = event.pitch
 		var key_vel = event.velocity
-		print(key_vel)
+		
 		print(event.controller_number)
 		if key_index in midi_map:
 			print("key=" + str(midi_map.find(key_index)))
@@ -202,19 +201,12 @@ func _unhandled_input(event : InputEvent):
 					get_tree().input_event(input_event)
 
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 func pad_press(pad_name):
-	#print(pad_name)
 	var active_node = "play_instance" + str(pad_name)
 	var active_stream = get_node(active_node)
 	var active_mute = get_node("mute"+ str(pad_name))
 	if active_mute.pressed == false :
 		active_stream.play()
-	#print(str(active_stream) +"audio")
 
 func pad_change_sample(pad_name):
 	if drag_file == true:
@@ -223,12 +215,10 @@ func pad_change_sample(pad_name):
 		$selfile.visible = false
 		var active_node = "pad" + str(pad_name)
 		get_node(active_node).text = sel_file_name.left ( 6 )
-		#print(list_file[sel_file_name])
 		get_node("play_instance"+str(pad_name)).stream = load(list_file[sel_file_name])
 
 func volume_change(volume, number):
 	get_node("play_instance" + str(number)).volume_db = volume
-
 
 
 func _on_File_rep_cell_selected():
