@@ -4,6 +4,7 @@ extends Control
 var conf_menu
 var Master_vol_midi = 14
 var Loop_vol_midi = 15
+var conf_file = "res://conf.cfg"
 
 func get_conf_list(path):
 	var files = []
@@ -28,12 +29,15 @@ func _ready():
 
 	OS.open_midi_inputs()
 	for current_midi_input in OS.get_connected_midi_inputs():
-		print(current_midi_input)
 		if current_midi_input in list_machine:
+			var configFile = ConfigFile.new()
+			configFile.load(conf_file)
+			configFile.set_value("MACHINE", "active_machine", "res://model/"+str(current_midi_input)+".cfg")
+			configFile.save(conf_file)
 			print(current_midi_input)
 			
 	if OS.get_connected_midi_inputs().empty() == true:
-		print("no detected")
+		print("Device no detected")
 		$noMidi.show()
 
 
