@@ -15,9 +15,7 @@ func _ready():
 		save_song = configFile.get_value("OUTPUT", "song_save_path")
 
 
-func _process(delta):
-	if Input.is_action_pressed("ui_accept"):
-		self.ACTION_MODE_BUTTON_PRESS
+
 		
 func _on_Rec_Button_toggled(button_pressed):
 

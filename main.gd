@@ -41,7 +41,12 @@ func _ready():
 		$noMidi.show()
 
 
-
+func _process(_delta):
+	if Input.is_action_just_released("record"):
+		if $foot/ColorRect/Rec_Button.pressed == false:
+			$foot/ColorRect/Rec_Button.pressed = true
+		else:
+			$foot/ColorRect/Rec_Button.pressed = false
 
 func _on_edit_pressed():
 	$PopupPanel.show()
