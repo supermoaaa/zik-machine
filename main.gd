@@ -5,6 +5,7 @@ var conf_menu
 var Master_vol_midi = 14
 var Loop_vol_midi = 15
 var conf_file = "res://conf.cfg"
+var default_conf = "res://model/default.cfg"
 
 func get_conf_list(path):
 	var files = []
@@ -35,6 +36,12 @@ func _ready():
 			configFile.set_value("MACHINE", "active_machine", "res://model/"+str(current_midi_input)+".cfg")
 			configFile.save(conf_file)
 			print(current_midi_input)
+		
+		else:
+			var configFile = ConfigFile.new()
+			configFile.load(default_conf)
+			var new_conf_file = "res://model/" + str(current_midi_input)+".cfg"
+			configFile.save(new_conf_file)
 			
 	if OS.get_connected_midi_inputs().empty() == true:
 		print("Device no detected")

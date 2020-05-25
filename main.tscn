@@ -99,11 +99,10 @@ __meta__ = {
 
 [node name="File_rep" type="Tree" parent="body"]
 anchor_top = 0.128
-anchor_bottom = 0.128
-margin_left = 0.496413
-margin_top = -0.135001
-margin_right = 127.496
-margin_bottom = 348.865
+anchor_right = 0.0166016
+anchor_bottom = 0.787472
+margin_top = -0.216003
+margin_right = 106.0
 allow_reselect = true
 __meta__ = {
 "_edit_use_anchors_": true
@@ -178,10 +177,10 @@ __meta__ = {
 }
 
 [node name="Master_vol" type="VSlider" parent="foot/ColorRect/MasterRect"]
-margin_left = 0.950003
-margin_top = -0.950012
-margin_right = 36.95
-margin_bottom = 102.05
+margin_left = -0.158029
+margin_top = 3.48212
+margin_right = 35.842
+margin_bottom = 106.482
 theme = ExtResource( 25 )
 custom_icons/grabber_disabled = ExtResource( 5 )
 custom_icons/grabber_highlight = ExtResource( 6 )
@@ -227,9 +226,9 @@ __meta__ = {
 }
 
 [node name="vumetre" type="ColorRect" parent="foot/ColorRect/MasterRect"]
-margin_left = 62.0
+margin_left = 60.892
 margin_top = 16.0
-margin_right = 159.0
+margin_right = 157.892
 margin_bottom = 92.0
 color = Color( 0, 0, 0, 0.145098 )
 script = ExtResource( 10 )
