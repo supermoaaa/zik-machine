@@ -30,18 +30,21 @@ func _ready():
 
 	OS.open_midi_inputs()
 	for current_midi_input in OS.get_connected_midi_inputs():
-		if current_midi_input in list_machine:
-			var configFile = ConfigFile.new()
-			configFile.load(conf_file)
-			configFile.set_value("MACHINE", "active_machine", "res://model/"+str(current_midi_input)+".cfg")
-			configFile.save(conf_file)
-			print(current_midi_input)
-		
-		else:
+		if not current_midi_input in list_machine:
 			var configFile = ConfigFile.new()
 			configFile.load(default_conf)
 			var new_conf_file = "res://model/" + str(current_midi_input)+".cfg"
 			configFile.save(new_conf_file)
+			$PopupPanel.show()			
+			
+			
+		var configFile = ConfigFile.new()
+		configFile.load(conf_file)
+		configFile.set_value("MACHINE", "active_machine", "res://model/"+str(current_midi_input)+".cfg")
+		configFile.save(conf_file)
+		print(current_midi_input)
+		
+
 			
 	if OS.get_connected_midi_inputs().empty() == true:
 		print("Device no detected")
