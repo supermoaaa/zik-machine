@@ -792,8 +792,8 @@ dialog_text = "record save path"
 dialog_hide_on_ok = true
 mode = 2
 access = 2
-current_dir = "E:/godot/trunk zik"
-current_path = "E:/godot/trunk zik/"
+current_dir = "/godot/trunk zik"
+current_path = "/godot/trunk zik/"
 
 [node name="output_change" type="Button" parent="PopupPanel"]
 margin_left = 31.9473
@@ -836,6 +836,20 @@ margin_top = 181.391
 margin_right = 866.799
 margin_bottom = 196.391
 text = "BANK number :"
+
+[node name="sound_driver" type="Label" parent="PopupPanel"]
+margin_left = 141.0
+margin_top = 76.0
+margin_right = 195.0
+margin_bottom = 92.0
+text = "None"
+
+[node name="Label_sound_driver" type="Label" parent="PopupPanel"]
+margin_left = 41.402
+margin_top = 74.5642
+margin_right = 125.402
+margin_bottom = 88.5642
+text = "Sound driver:"
 
 [node name="Audio_out" type="AudioStreamPlayer" parent="."]
 

@@ -42,6 +42,7 @@ func _ready():
 		$controlleurName.text = current_midi_input
 		#$savepreset.current_file = current_midi_input + ".cfg"
 	OS.close_midi_inputs()
+	$sound_driver.text = OS.get_audio_driver_name(0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
