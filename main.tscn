@@ -628,6 +628,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VSeparator" type="VSeparator" parent="foot/ColorRect/micro/micro_effect_Panel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 158.326
+margin_top = 4.88391
+margin_right = 162.326
+margin_bottom = 201.884
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_phaser" type="Label" parent="foot/ColorRect/micro/micro_effect_Panel"]
+margin_left = 181.951
+margin_top = 22.1607
+margin_right = 230.951
+margin_bottom = 36.1607
+text = "PHASER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_phaser" type="Button" parent="foot/ColorRect/micro/micro_effect_Panel"]
+anchor_bottom = 0.049
+margin_left = 247.267
+margin_top = 19.828
+margin_right = 275.267
+margin_bottom = 29.734
+text = "on"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="effect_bt" type="Button" parent="foot/ColorRect/micro"]
 margin_left = 51.0
 margin_top = 65.0
