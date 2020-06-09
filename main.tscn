@@ -654,6 +654,7 @@ margin_left = 247.267
 margin_top = 19.828
 margin_right = 275.267
 margin_bottom = 29.734
+toggle_mode = true
 text = "on"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -932,6 +933,7 @@ autostart = true
 [connection signal="value_changed" from="foot/ColorRect/micro/micro_effect_Panel/HSlider2" to="foot/ColorRect/micro" method="_on_HSlider2_value_changed"]
 [connection signal="toggled" from="foot/ColorRect/micro/micro_effect_Panel/Check_feedback" to="foot/ColorRect/micro" method="_on_Check_feedback_toggled"]
 [connection signal="value_changed" from="foot/ColorRect/micro/micro_effect_Panel/HSlider3" to="foot/ColorRect/micro" method="_on_HSlider3_value_changed"]
+[connection signal="toggled" from="foot/ColorRect/micro/micro_effect_Panel/Button_phaser" to="foot/ColorRect/micro" method="_on_Button_phaser_toggled"]
 [connection signal="toggled" from="foot/ColorRect/micro/effect_bt" to="foot/ColorRect/micro" method="_on_Button_toggled"]
 [connection signal="toggled" from="foot/ColorRect/master_compress/compress_on" to="foot/ColorRect/master_compress" method="_on_compress_on_toggled"]
 [connection signal="value_changed" from="foot/ColorRect/master_compress/HSlider_gain" to="foot/ColorRect/master_compress" method="_on_HSlider_gain_value_changed"]

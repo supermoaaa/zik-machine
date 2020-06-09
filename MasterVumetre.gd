@@ -10,6 +10,7 @@ var spectrum
 
 func _draw():
 		
+# warning-ignore:integer_division
 	var w = WIDTH / VU_COUNT
 	var prev_hz = 0
 	

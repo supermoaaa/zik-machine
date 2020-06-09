@@ -69,3 +69,12 @@ func _on_HSlider2_value_changed(value):
 
 func _on_HSlider3_value_changed(value):
 	AudioServer.get_bus_effect(1, 1).set_feedback_delay_ms(value)
+
+
+func _on_Button_phaser_toggled(button_pressed):
+	if button_pressed == true:
+		AudioServer.set_bus_effect_enabled ( 1, 2, true )
+		$micro_effect_Panel/Button_phaser.text = "off"
+	else:
+		AudioServer.set_bus_effect_enabled ( 1, 2, false )
+		$micro_effect_Panel/Button_phaser.text = "on"

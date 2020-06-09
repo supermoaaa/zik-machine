@@ -18,6 +18,7 @@ resource_name = "Delay"
 
 [sub_resource type="AudioEffectPhaser" id=6]
 resource_name = "Phaser"
+depth = 2.1
 
 [resource]
 bus/0/volume_db = -0.00828743
