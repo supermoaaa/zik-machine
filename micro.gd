@@ -78,3 +78,7 @@ func _on_Button_phaser_toggled(button_pressed):
 	else:
 		AudioServer.set_bus_effect_enabled ( 1, 2, false )
 		$micro_effect_Panel/Button_phaser.text = "on"
+
+
+func _on_feed_phaser_scroll_value_changed(value):
+	AudioServer.get_bus_effect(1, 2).set_feedback(value/10)

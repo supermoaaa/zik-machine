@@ -650,12 +650,34 @@ __meta__ = {
 
 [node name="Button_phaser" type="Button" parent="foot/ColorRect/micro/micro_effect_Panel"]
 anchor_bottom = 0.049
-margin_left = 247.267
-margin_top = 19.828
-margin_right = 275.267
-margin_bottom = 29.734
+margin_left = 248.267
+margin_top = 15.828
+margin_right = 276.267
+margin_bottom = 25.734
 toggle_mode = true
 text = "on"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feed_phaser_label" type="Label" parent="foot/ColorRect/micro/micro_effect_Panel"]
+margin_left = 173.0
+margin_top = 50.0001
+margin_right = 238.0
+margin_bottom = 64.0001
+text = "FEEDBACK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="feed_phaser_scroll" type="HSlider" parent="foot/ColorRect/micro/micro_effect_Panel"]
+margin_left = 255.0
+margin_top = 50.0001
+margin_right = 329.0
+margin_bottom = 66.0001
+min_value = 1.0
+max_value = 9.0
+value = 7.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -934,6 +956,7 @@ autostart = true
 [connection signal="toggled" from="foot/ColorRect/micro/micro_effect_Panel/Check_feedback" to="foot/ColorRect/micro" method="_on_Check_feedback_toggled"]
 [connection signal="value_changed" from="foot/ColorRect/micro/micro_effect_Panel/HSlider3" to="foot/ColorRect/micro" method="_on_HSlider3_value_changed"]
 [connection signal="toggled" from="foot/ColorRect/micro/micro_effect_Panel/Button_phaser" to="foot/ColorRect/micro" method="_on_Button_phaser_toggled"]
+[connection signal="value_changed" from="foot/ColorRect/micro/micro_effect_Panel/feed_phaser_scroll" to="foot/ColorRect/micro" method="_on_feed_phaser_scroll_value_changed"]
 [connection signal="toggled" from="foot/ColorRect/micro/effect_bt" to="foot/ColorRect/micro" method="_on_Button_toggled"]
 [connection signal="toggled" from="foot/ColorRect/master_compress/compress_on" to="foot/ColorRect/master_compress" method="_on_compress_on_toggled"]
 [connection signal="value_changed" from="foot/ColorRect/master_compress/HSlider_gain" to="foot/ColorRect/master_compress" method="_on_HSlider_gain_value_changed"]
