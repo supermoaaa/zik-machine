@@ -82,3 +82,7 @@ func _on_Button_phaser_toggled(button_pressed):
 
 func _on_feed_phaser_scroll_value_changed(value):
 	AudioServer.get_bus_effect(1, 2).set_feedback(value/10)
+
+
+func _on_HSlider_deth_phaser_value_changed(value):
+	AudioServer.get_bus_effect(1, 2).set_depth(value/10)
