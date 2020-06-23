@@ -141,6 +141,7 @@ func _ready():
 		play_instance.name = "play_instance" + str(pad_name)
 		play_instance.stream = load(audio_set[pad_name])
 		play_instance.volume_db = -15
+		play_instance.connect("finished", self, "audio_stat", [str(pad_name)])
 		play_instance.add_to_group("song")
 		self.add_child(play_instance)
 		pad_name += 1
@@ -220,6 +221,8 @@ func pad_change_sample(pad_name):
 func volume_change(volume, number):
 	get_node("play_instance" + str(number)).volume_db = volume
 
+func audio_stat(pad_name):
+	print(pad_name+"boloss")
 
 func _on_File_rep_cell_selected():
 	$sound_file.stream = load(list_file[get_node("File_rep").get_selected().get_text(0)])
