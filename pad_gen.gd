@@ -69,8 +69,8 @@ func _ready():
 
 	for pad in pad_number:
 		var pad_button = Button.new()
-		pad_button.margin_top = OS.get_screen_size().y/2 - (pad_number*4)
-		pad_button.margin_bottom = OS.get_screen_size().y/2 + (pad_number)
+		pad_button.margin_top = OS.get_screen_size().y/2 - (pad_number*7)
+		pad_button.margin_bottom = OS.get_screen_size().y/2 - (pad_number*2)
 		pad_button.margin_left = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3))
 		pad_button.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.8))
 		pad_button.name = "pad" + str(pad_name)
@@ -78,6 +78,29 @@ func _ready():
 		pad_button.connect("button_down", self, "pad_press", [pad_name])
 		pad_button.connect("mouse_entered", self, "pad_change_sample", [pad_name])
 		self.add_child(pad_button)
+		
+		var loop_button = TextureButton.new()
+		loop_button.margin_top = OS.get_screen_size().y/2 - (pad_number*1)
+		loop_button.margin_bottom = OS.get_screen_size().y/2 + (pad_number*1)
+		loop_button.margin_left = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3))
+		loop_button.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.8))
+		loop_button.name = "loop" + str(pad_name)
+		loop_button.texture_normal = load("res://utils/bt_off.png")
+		loop_button.texture_hover = load("res://utils/bt_over.png")
+		loop_button.texture_pressed = load("res://utils/bt_on.png")
+		loop_button.expand = true
+		loop_button.toggle_mode = true
+		
+		var loop_text = Label.new()
+		loop_text.text = "looper"
+		loop_text.margin_left = 15
+		loop_text.align = 2
+		loop_text.valign = 1
+		
+		self.add_child(loop_button)
+		loop_button.add_child(loop_text)
+		
+
 
 		var mute_button = TextureButton.new()
 		mute_button.margin_top = OS.get_screen_size().y/2 + (pad_number*3)
@@ -126,8 +149,8 @@ func _ready():
 
 		
 		var pad_volume = VSlider.new()
-		pad_volume.margin_top = OS.get_screen_size().y/2 - (pad_number*20)
-		pad_volume.margin_bottom = OS.get_screen_size().y/2 - (pad_number*6)
+		pad_volume.margin_top = OS.get_screen_size().y/2 - (pad_number*22)
+		pad_volume.margin_bottom = OS.get_screen_size().y/2 - (pad_number*8)
 		pad_volume.margin_left = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.3))
 		pad_volume.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.5))
 		pad_volume.name = "volume" + str(pad_name)
