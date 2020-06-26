@@ -9,6 +9,7 @@ var PATH = "res://sample/"
 var drag_file = false
 var list_file = {}
 var Master_vol_midi = 13
+var looper = false
 
 func get_filelist(scan_dir : String) -> Array:
 	var my_files : Array = []
@@ -226,11 +227,22 @@ func _unhandled_input(event : InputEvent):
 
 
 func pad_press(pad_name):
-	var active_node = "play_instance" + str(pad_name)
-	var active_stream = get_node(active_node)
+
+	var active_stream = get_node("play_instance" + str(pad_name))
 	var active_mute = get_node("mute"+ str(pad_name))
+	var active_loop = get_node("loop"+ str(pad_name))
 	if active_mute.pressed == false :
-		active_stream.play()
+		if active_loop.pressed == false :
+			active_stream.play()
+		else:
+			if active_stream.is_playing():
+				looper = false
+				active_stream.stop()
+				
+			else:
+				looper = true
+				active_stream.play()
+				
 
 func pad_change_sample(pad_name):
 	if drag_file == true:
@@ -245,7 +257,10 @@ func volume_change(volume, number):
 	get_node("play_instance" + str(number)).volume_db = volume
 
 func audio_stat(pad_name):
-	print(pad_name+"boloss")
+	var active_stream = get_node("play_instance" + str(pad_name))
+	var active_loop = get_node("loop"+ str(pad_name))
+	if active_loop.pressed == true and looper == true:
+		active_stream.play()
 
 func _on_File_rep_cell_selected():
 	$sound_file.stream = load(list_file[get_node("File_rep").get_selected().get_text(0)])
