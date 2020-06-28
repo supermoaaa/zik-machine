@@ -2,7 +2,8 @@ extends ColorRect
 
 
 # Declare member variables here. Examples:
-var PATH = "res://loop/"
+
+var conf_file = "res://conf.cfg"
 var list_file = []
 # var b = "text"
 
@@ -31,7 +32,7 @@ func get_filelist(scan_dir : String) -> Array:
 	
 	return my_files
 
-func load_wav_file():
+func load_wav_file(PATH):
 	var file_rep = get_node("LoopTrack")
 
 	
@@ -42,8 +43,11 @@ func load_wav_file():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_wav_file()
-	pass # Replace with function body.
+	var configFile = ConfigFile.new()
+	configFile.load(conf_file)
+	var PATH = configFile.get_value("SONG_PATH", "loop_path")
+	load_wav_file(PATH)
+
 	var loop_instance = AudioStreamPlayer.new()
 	loop_instance.name = "loop_stream"
 	loop_instance.stream = load("res://loop/"+list_file[0])
