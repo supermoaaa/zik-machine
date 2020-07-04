@@ -7,6 +7,41 @@ var Loop_vol_midi = 15
 var conf_file = "res://conf.cfg"
 var default_conf = "res://model/default.cfg"
 
+func get_filelist(scan_dir : String) -> Array:
+	var my_files : Array = []
+	var dir := Directory.new()
+	if dir.open(scan_dir) != OK:
+		printerr("Warning: could not open directory: ", scan_dir)
+		return []
+	
+	if dir.list_dir_begin(true, true) != OK:
+		printerr("Warning: could not list contents of: ", scan_dir)
+		return []
+	
+	var file_name := dir.get_next()
+	while file_name != "":
+		if dir.current_is_dir():
+			my_files += get_filelist(dir.get_current_dir() + "/" + file_name)
+		else:
+			if file_name.get_extension () == "wav":
+				my_files.append(dir.get_current_dir() + "/" + file_name)
+	
+		file_name = dir.get_next()
+	
+	return my_files
+
+func load_wav_file(PATH):
+		var file = File.new()
+		if file.open("res://loop_path.sav", File.WRITE) != 0:
+			print("Error opening file")
+			return
+	
+		for rep in get_filelist(PATH):
+		
+			file.store_line(rep)
+			file.close()
+
+
 func get_conf_list(path):
 	var files = []
 	var dir = Directory.new()
@@ -29,6 +64,8 @@ func _ready():
 	var list_machine = get_conf_list("res://model/")
 
 	OS.open_midi_inputs()
+	load_wav_file("res://loop/")
+	
 	for current_midi_input in OS.get_connected_midi_inputs():
 		if not current_midi_input in list_machine:
 			var configFile = ConfigFile.new()
