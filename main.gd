@@ -31,15 +31,18 @@ func get_filelist(scan_dir : String) -> Array:
 	return my_files
 
 func load_wav_file(PATH):
-		var file = File.new()
-		if file.open("res://loop_path.sav", File.WRITE) != 0:
-			print("Error opening file")
-			return
-	
-		for rep in get_filelist(PATH):
-		
-			file.store_line(rep)
-			file.close()
+	var my_loops : Array = []
+	for rep in get_filelist(PATH):
+		my_loops.append(rep)
+			
+
+	var file = File.new()
+	if file.open("res://loop_path.sav", File.WRITE) != 0:
+		print("Error opening file")
+		return
+	for files in my_loops:
+		file.store_line(files)
+	file.close()
 
 
 func get_conf_list(path):
