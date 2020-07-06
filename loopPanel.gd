@@ -8,45 +8,28 @@ var list_file = []
 # var b = "text"
 
 
-
-func get_filelist(scan_dir : String) -> Array:
-	var my_files : Array = []
-	var dir := Directory.new()
-	if dir.open(scan_dir) != OK:
-		printerr("Warning: could not open directory: ", scan_dir)
-		return []
-	
-	if dir.list_dir_begin(true, true) != OK:
-		printerr("Warning: could not list contents of: ", scan_dir)
-		return []
-	
-	var file_name := dir.get_next()
-	while file_name != "":
-		if dir.current_is_dir():
-			my_files += get_filelist(dir.get_current_dir() + "/" + file_name)
-		else:
-			if file_name.get_extension () == "wav":
-				my_files.append(dir.get_current_dir() + "/" + file_name)
-	
-		file_name = dir.get_next()
-	
-	return my_files
-
-func load_wav_file(PATH):
+func load_wav_file():
 	var file_rep = get_node("LoopTrack")
-
+	var file = File.new()
+	if not file.file_exists("res://loop_path.sav"):
+		print("No file detected")
+		return
+	if file.open("res://loop_path.sav", File.READ) != 0:
+		print("Error opening file")
+		return
 	
-	for rep in get_filelist(PATH):
-		file_rep.add_item(str(rep.get_file ()))
-		list_file.append(rep.get_file ())
+	while not file.eof_reached():
+		list_file.append(file.get_line())
+	print(list_file)
+	for rep in list_file:
+		file_rep.add_item(rep)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var configFile = ConfigFile.new()
 	configFile.load(conf_file)
-	var PATH = configFile.get_value("SONG_PATH", "loop_path")
-	load_wav_file(PATH)
+	load_wav_file()
 
 	var loop_instance = AudioStreamPlayer.new()
 	loop_instance.name = "loop_stream"
