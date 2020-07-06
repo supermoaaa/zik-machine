@@ -41,7 +41,7 @@ func load_file(PATH, file_out):
 		print("Error opening file")
 		return
 	for files in my_loops:
-		file.store_line(files)
+		file.store_line(files.get_file ())
 	file.close()
 
 
