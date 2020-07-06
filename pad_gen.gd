@@ -39,7 +39,19 @@ func load_wav_file():
 	var root = file_rep.create_item()
 	root.set_text(0, "file")
 	
-	for rep in get_filelist(PATH):
+	var file = File.new()
+	var list_wav = []
+	if not file.file_exists("res://sample_path.sav"):
+		print("No file detected")
+		return
+	if file.open("res://sample_path.sav", File.READ) != 0:
+		print("Error opening file")
+		return
+	
+	while not file.eof_reached():
+		list_wav.append(file.get_line())
+	#print(list_wav)
+	for rep in list_wav:
 		var start_rep = file_rep.create_item(root)
 		start_rep.set_text(0, str(rep.get_file ()))
 		list_file[rep.get_file ()] = rep
