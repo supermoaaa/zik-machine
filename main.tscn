@@ -812,9 +812,9 @@ __meta__ = {
 }
 
 [node name="exit" type="Button" parent="PopupPanel"]
-anchor_left = 0.425
+anchor_left = 0.421123
 anchor_top = 0.906045
-anchor_right = 0.504
+anchor_right = 0.500123
 anchor_bottom = 0.975
 margin_left = -0.127502
 margin_top = -0.804199
@@ -827,10 +827,10 @@ __meta__ = {
 }
 
 [node name="general" type="Label" parent="PopupPanel"]
-margin_left = 23.6647
-margin_top = 19.9779
-margin_right = 81.6647
-margin_bottom = 33.9779
+margin_left = 138.873
+margin_top = 26.1671
+margin_right = 196.873
+margin_bottom = 40.1672
 rect_scale = Vector2( 2.42857, 1.57143 )
 text = "GENERAL"
 __meta__ = {
@@ -838,10 +838,10 @@ __meta__ = {
 }
 
 [node name="controlleurLabel" type="Label" parent="PopupPanel"]
-margin_left = 750.0
-margin_top = 33.0
-margin_right = 854.0
-margin_bottom = 49.0
+margin_left = 635.839
+margin_top = 28.5791
+margin_right = 739.839
+margin_bottom = 44.5791
 rect_scale = Vector2( 1.59016, 1.72414 )
 text = "CONTROLLEUR"
 
@@ -888,6 +888,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VSeparator" type="VSeparator" parent="PopupPanel"]
+margin_left = 463.0
+margin_top = 34.0
+margin_right = 473.0
+margin_bottom = 378.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Pad_Number_opt" type="OptionButton" parent="PopupPanel"]
 margin_left = 736.954
 margin_top = 114.176
@@ -926,6 +935,13 @@ margin_top = 74.5642
 margin_right = 125.402
 margin_bottom = 88.5642
 text = "Sound driver:"
+
+[node name="detected_midi_lab" type="Label" parent="PopupPanel"]
+margin_left = 487.876
+margin_top = 86.3437
+margin_right = 581.876
+margin_bottom = 100.344
+text = "midi button  detected:"
 
 [node name="Audio_out" type="AudioStreamPlayer" parent="."]
 

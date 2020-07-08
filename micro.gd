@@ -2,7 +2,7 @@ extends ColorRect
 
 
 # Declare member variables here. Examples:
-# var a = 2
+
 var bus_delay = "none"
 
 # Called when the node enters the scene tree for the first time.

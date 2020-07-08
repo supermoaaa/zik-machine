@@ -76,4 +76,26 @@ func _on_Pad_Number_opt_item_selected(id):
 		configFile.set_value("PAD CONF","PAD_number",16)
 		
 	configFile.save(conf_machine)
+
+enum GlobalScope_MidiMessageList {
+	MIDI_MESSAGE_NOTE_OFF = 0x8,
+	MIDI_MESSAGE_NOTE_ON = 0x9,
+	MIDI_MESSAGE_AFTERTOUCH = 0xA,
+	MIDI_MESSAGE_CONTROL_CHANGE = 0xB,
+	MIDI_MESSAGE_PROGRAM_CHANGE = 0xC,
+	MIDI_MESSAGE_CHANNEL_PRESSURE = 0xD,
+	MIDI_MESSAGE_PITCH_BEND = 0xE,
+};
+
+func get_midi_message_description(event : InputEventMIDI):
+
+	if GlobalScope_MidiMessageList.values().has(event.message):
+		return GlobalScope_MidiMessageList.keys()[event.message - 0x08]
+	return(event.message)
+
 	
+func _unhandled_input(event : InputEvent):
+
+	if (event is InputEventMIDI):
+		var key_index = event.pitch
+		$detected_midi_lab.text = "midi button detected:" + str(key_index)

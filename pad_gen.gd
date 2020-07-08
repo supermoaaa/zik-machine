@@ -78,7 +78,6 @@ func _ready():
 	var audio_set = configFile.get_value("PAD CONF", "audio_set")
 	midi_map = configFile.get_value("PAD CONF", "midi_set")
 	Master_vol_midi = configFile.get_value("PAD CONF", "midi_master")
-	#print(audio_set)
 
 	for pad in pad_number:
 		var pad_button = Button.new()
