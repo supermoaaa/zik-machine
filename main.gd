@@ -150,3 +150,6 @@ func _unhandled_input(event : InputEvent):
 # end of midi message
 func _on_Timer_timeout():
 	$noMidi.hide()
+
+
+

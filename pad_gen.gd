@@ -102,6 +102,7 @@ func _ready():
 		loop_button.texture_pressed = load("res://utils/bt_on.png")
 		loop_button.expand = true
 		loop_button.toggle_mode = true
+		loop_button.add_to_group("loops", true)
 		
 		var loop_text = Label.new()
 		loop_text.text = "looper"
@@ -279,3 +280,14 @@ func _on_File_rep_cell_selected():
 	$selfile.set_position(get_local_mouse_position())
 	$selfile.visible = true
 	drag_file = true
+
+
+func _on_Button_toggled(button_pressed):
+	var loops_node = get_tree().get_nodes_in_group("loops")
+	if button_pressed == true:
+		for loop in loops_node:
+			loop.pressed = true
+	else:
+		for loop in loops_node:
+			loop.pressed = false
+		
