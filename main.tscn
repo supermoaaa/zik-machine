@@ -127,10 +127,11 @@ __meta__ = {
 volume_db = -10.47
 
 [node name="Button" type="Button" parent="body"]
-margin_left = 12.2576
-margin_top = 410.461
-margin_right = 88.2576
-margin_bottom = 432.461
+margin_left = 12.0
+margin_top = 407.0
+margin_right = 95.0
+margin_bottom = 432.0
+theme = ExtResource( 11 )
 toggle_mode = true
 text = "loop all"
 
