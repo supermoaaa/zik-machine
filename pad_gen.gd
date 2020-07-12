@@ -75,8 +75,8 @@ func _ready():
 	#print(str(conf_machine))
 	configFile.load(conf_machine)
 	var pad_number = configFile.get_value("PAD CONF", "PAD_number")
-	var audio_set = configFile.get_value("PAD CONF", "audio_set")
-	midi_map = configFile.get_value("PAD CONF", "midi_set")
+	var audio_set = configFile.get_value("PAD CONF", "audio_set_0")
+	midi_map = configFile.get_value("PAD CONF", "midi_set_0")
 	Master_vol_midi = configFile.get_value("PAD CONF", "midi_master")
 
 	for pad in pad_number:
