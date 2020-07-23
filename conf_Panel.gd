@@ -99,3 +99,10 @@ func _unhandled_input(event : InputEvent):
 	if (event is InputEventMIDI):
 		var key_index = event.pitch
 		$detected_midi_lab.text = "midi button detected:" + str(key_index)
+
+
+func _on_bank_item_selected(index):
+	var configFile = ConfigFile.new()
+	configFile.load(conf_machine)
+	configFile.set_value("PAD CONF","BANK_number",str(index+1))
+	configFile.save(conf_machine)

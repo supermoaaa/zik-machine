@@ -923,6 +923,9 @@ margin_top = 176.887
 margin_right = 938.189
 margin_bottom = 199.887
 text = "none"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="bank_label" type="Label" parent="PopupPanel"]
 margin_left = 768.799
@@ -1015,4 +1018,5 @@ autostart = true
 [connection signal="dir_selected" from="PopupPanel/FileDialog" to="PopupPanel" method="_on_FileDialog_dir_selected"]
 [connection signal="pressed" from="PopupPanel/output_change" to="PopupPanel" method="_on_output_change_pressed"]
 [connection signal="item_selected" from="PopupPanel/Pad_Number_opt" to="PopupPanel" method="_on_Pad_Number_opt_item_selected"]
+[connection signal="item_selected" from="PopupPanel/bank" to="PopupPanel" method="_on_bank_item_selected"]
 [connection signal="timeout" from="noMidi/Timer" to="." method="_on_Timer_timeout"]
