@@ -98,7 +98,7 @@ __meta__ = {
 }
 
 [node name="File_rep" type="Tree" parent="body"]
-anchor_top = 0.128
+anchor_top = 0.215248
 anchor_right = 0.0166016
 anchor_bottom = 0.787472
 margin_top = -0.216003
@@ -984,6 +984,33 @@ uppercase = true
 [node name="Timer" type="Timer" parent="noMidi"]
 wait_time = 5.0
 autostart = true
+
+[node name="info" type="ColorRect" parent="."]
+margin_left = 20.9385
+margin_top = 39.119
+margin_right = 175.939
+margin_bottom = 104.119
+color = Color( 0.196078, 0.12549, 0.12549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_info" type="Label" parent="info"]
+margin_left = 6.29961
+margin_top = 5.03969
+margin_right = 46.2996
+margin_bottom = 19.0397
+text = "INFO:"
+
+[node name="Label" type="Label" parent="info"]
+margin_left = 10.0794
+margin_top = 23.9385
+margin_right = 86.0794
+margin_bottom = 37.9385
+text = "MIDI BANK:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="head/Control/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="head/Control/edit" to="." method="_on_edit_pressed"]
 [connection signal="cell_selected" from="body/File_rep" to="body" method="_on_File_rep_cell_selected"]
