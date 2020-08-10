@@ -986,11 +986,11 @@ wait_time = 5.0
 autostart = true
 
 [node name="info" type="ColorRect" parent="."]
-margin_left = 20.9385
-margin_top = 39.119
-margin_right = 175.939
-margin_bottom = 104.119
-color = Color( 0.196078, 0.12549, 0.12549, 1 )
+margin_left = 13.8728
+margin_top = 40.7818
+margin_right = 168.873
+margin_bottom = 113.782
+color = Color( 0.243137, 0.0313726, 0.439216, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1003,10 +1003,10 @@ margin_bottom = 19.0397
 text = "INFO:"
 
 [node name="Label" type="Label" parent="info"]
-margin_left = 10.0794
-margin_top = 23.9385
-margin_right = 86.0794
-margin_bottom = 37.9385
+margin_left = 10.7468
+margin_top = 23.2711
+margin_right = 86.7468
+margin_bottom = 37.2711
 text = "MIDI BANK:"
 __meta__ = {
 "_edit_use_anchors_": false
