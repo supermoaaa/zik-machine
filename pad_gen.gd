@@ -74,9 +74,10 @@ func _ready():
 	var conf_machine = configFile.get_value("MACHINE", "active_machine")
 	#print(str(conf_machine))
 	configFile.load(conf_machine)
+	var active_set = configFile.get_value("PAD CONF", "BANK_active")
 	var pad_number = configFile.get_value("PAD CONF", "PAD_number")
-	var audio_set = configFile.get_value("PAD CONF", "audio_set_0")
-	midi_map = configFile.get_value("PAD CONF", "midi_set_0")
+	var audio_set = configFile.get_value("PAD CONF", "audio_set")
+	midi_map = configFile.get_value("PAD CONF", "midi_set")
 	Master_vol_midi = configFile.get_value("PAD CONF", "midi_master")
 
 	for pad in pad_number:
@@ -86,7 +87,7 @@ func _ready():
 		pad_button.margin_left = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3))
 		pad_button.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.8))
 		pad_button.name = "pad" + str(pad_name)
-		pad_button.text = audio_set[pad_name].get_file ().left ( 6 )
+		pad_button.text = audio_set[active_set][pad_name].get_file ().left ( 6 )
 		pad_button.connect("button_down", self, "pad_press", [pad_name])
 		pad_button.connect("mouse_entered", self, "pad_change_sample", [pad_name])
 		self.add_child(pad_button)
@@ -175,7 +176,7 @@ func _ready():
 		
 		var play_instance = AudioStreamPlayer.new()
 		play_instance.name = "play_instance" + str(pad_name)
-		play_instance.stream = load(audio_set[pad_name])
+		play_instance.stream = load(audio_set[active_set][pad_name])
 		play_instance.volume_db = -15
 		play_instance.connect("finished", self, "audio_stat", [str(pad_name)])
 		play_instance.add_to_group("song")

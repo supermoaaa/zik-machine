@@ -43,8 +43,8 @@ __meta__ = {
 
 [node name="head" type="Control" parent="."]
 anchor_right = 1.0
-margin_top = -1.0
-margin_right = 6.0
+margin_top = 6.0
+margin_right = -5.0
 margin_bottom = 43.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -55,29 +55,29 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -111.0
-margin_top = -15.0
+margin_left = -1019.0
+margin_top = -14.5
 margin_right = -6.0
-margin_bottom = 14.0
+margin_bottom = 14.5
 
 [node name="quit" type="Button" parent="head/Control"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -41.0
+margin_left = -31.5
 margin_top = -16.5
-margin_right = -3.0
+margin_right = 6.5
 margin_bottom = 16.5
 text = "X"
 
 [node name="edit" type="Button" parent="head/Control"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = -0.869201
-margin_top = -16.2965
-margin_right = 58.1308
-margin_bottom = 16.7035
+margin_left = 920.386
+margin_top = -16.4265
+margin_right = 979.386
+margin_bottom = 16.5735
 text = "edit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -986,10 +986,10 @@ wait_time = 5.0
 autostart = true
 
 [node name="info" type="ColorRect" parent="."]
-margin_left = 13.8728
-margin_top = 40.7818
-margin_right = 168.873
-margin_bottom = 113.782
+margin_left = 6.30473
+margin_top = 50.8726
+margin_right = 161.305
+margin_bottom = 123.873
 color = Color( 0.243137, 0.0313726, 0.439216, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1003,11 +1003,11 @@ margin_bottom = 19.0397
 text = "INFO:"
 
 [node name="Label" type="Label" parent="info"]
-margin_left = 10.7468
+margin_left = 7.38321
 margin_top = 23.2711
-margin_right = 86.7468
+margin_right = 83.3832
 margin_bottom = 37.2711
-text = "MIDI BANK:"
+text = "MIDI BANK: 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
