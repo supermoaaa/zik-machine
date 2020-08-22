@@ -3,6 +3,7 @@ extends Control
 
 # Declare member variables here. Examples:
 var conf_file = "res://conf.cfg"
+var conf_machine = ""
 var midi_map = []
 var PATH = "res://sample/"
 
@@ -10,6 +11,8 @@ var drag_file = false
 var list_file = {}
 var Master_vol_midi = 13
 var looper = false
+var audio_set = []
+var active_set = 0
 
 func get_filelist(scan_dir : String) -> Array:
 	var my_files : Array = []
@@ -71,12 +74,12 @@ func _ready():
 	var pad_name = 0
 	var configFile = ConfigFile.new()
 	configFile.load(conf_file)
-	var conf_machine = configFile.get_value("MACHINE", "active_machine")
-	#print(str(conf_machine))
+	conf_machine = configFile.get_value("MACHINE", "active_machine")
+
 	configFile.load(conf_machine)
-	var active_set = configFile.get_value("PAD CONF", "BANK_active")
+	active_set = configFile.get_value("PAD CONF", "BANK_active")
 	var pad_number = configFile.get_value("PAD CONF", "PAD_number")
-	var audio_set = configFile.get_value("PAD CONF", "audio_set")
+	audio_set = configFile.get_value("PAD CONF", "audio_set")
 	midi_map = configFile.get_value("PAD CONF", "midi_set")
 	Master_vol_midi = configFile.get_value("PAD CONF", "midi_master")
 
@@ -265,6 +268,7 @@ func pad_change_sample(pad_name):
 		var active_node = "pad" + str(pad_name)
 		get_node(active_node).text = sel_file_name.left ( 6 )
 		get_node("play_instance"+str(pad_name)).stream = load(list_file[sel_file_name])
+		audio_set[active_set][pad_name] = list_file[sel_file_name]
 
 func volume_change(volume, number):
 	get_node("play_instance" + str(number)).volume_db = volume
@@ -292,3 +296,11 @@ func _on_Button_toggled(button_pressed):
 		for loop in loops_node:
 			loop.pressed = false
 		
+
+
+func _on_save_current_bank_pressed():
+	print(audio_set[active_set])
+	var configFile = ConfigFile.new()
+	configFile.load(conf_machine)
+	configFile.set_value("PAD CONF", "audio_set", audio_set)
+	configFile.save(conf_machine)

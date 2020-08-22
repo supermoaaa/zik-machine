@@ -138,6 +138,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="save current bank" type="Button" parent="body"]
+margin_left = 2.04591
+margin_top = 357.398
+margin_right = 127.046
+margin_bottom = 379.398
+text = "save current bank"
+
 [node name="foot" type="Control" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -1018,6 +1025,7 @@ __meta__ = {
 [connection signal="pressed" from="head/Control/edit" to="." method="_on_edit_pressed"]
 [connection signal="cell_selected" from="body/File_rep" to="body" method="_on_File_rep_cell_selected"]
 [connection signal="toggled" from="body/loop all" to="body" method="_on_Button_toggled"]
+[connection signal="pressed" from="body/save current bank" to="body" method="_on_save_current_bank_pressed"]
 [connection signal="toggled" from="foot/ColorRect/Rec_Button" to="foot/ColorRect/Rec_Button" method="_on_Rec_Button_toggled"]
 [connection signal="value_changed" from="foot/ColorRect/MasterRect/Master_vol" to="." method="_on_VSlider_value_changed"]
 [connection signal="pressed" from="foot/ColorRect/loopPanel/playLoop" to="foot/ColorRect/loopPanel" method="_on_playLoop_pressed"]

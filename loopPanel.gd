@@ -20,7 +20,6 @@ func load_wav_file():
 	
 	while not file.eof_reached():
 		list_file.append(file.get_line())
-	print(list_file)
 	for rep in list_file:
 		file_rep.add_item(rep)
 
