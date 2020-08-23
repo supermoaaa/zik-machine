@@ -59,5 +59,5 @@ pointing/emulate_mouse_from_touch=false
 
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
-environment/default_clear_color=Color( 0.0745098, 0, 0.109804, 1 )
+environment/default_clear_color=Color( 0.0784314, 0.0980392, 0.145098, 1 )
 environment/default_environment="res://default_env.tres"
