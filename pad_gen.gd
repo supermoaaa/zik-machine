@@ -214,16 +214,16 @@ func _unhandled_input(event : InputEvent):
 		var key_index = event.pitch
 		var key_vel = event.velocity
 		
-		print(event.controller_number)
-		if key_index in midi_map:
-			print("key=" + str(midi_map.find(key_index)))
-			var active_PAD = "pad" + str(midi_map.find(key_index))
-			var active_vel = "vel" + str(midi_map.find(key_index))
+		#print(midi_map)
+		if key_index in midi_map[active_set]:
+			print("key=" + str(midi_map[active_set].find(key_index)))
+			var active_PAD = "pad" + str(midi_map[active_set].find(key_index))
+			var active_vel = "vel" + str(midi_map[active_set].find(key_index))
 
 			if get_node(active_vel).pressed == true:
 				# not good 
-				get_node("play_instance" + str(midi_map.find(key_index))).volume_db = (key_vel * 0.67) - 70
-				get_node("volume" + str(midi_map.find(key_index))).value = (key_vel * 0.67) - 70
+				get_node("play_instance" + str(midi_map[active_set].find(key_index))).volume_db = (key_vel * 0.67) - 70
+				get_node("volume" + str(midi_map[active_set].find(key_index))).value = (key_vel * 0.67) - 70
 
 			match event.message:
 				MIDI_MESSAGE_NOTE_ON:
