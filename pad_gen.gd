@@ -240,7 +240,11 @@ func _unhandled_input(event : InputEvent):
 					input_event.button_index = BUTTON_LEFT
 					input_event.position = get_node(active_PAD).rect_global_position
 					get_tree().input_event(input_event)
-
+		else:
+			for map in midi_map:
+				if key_index in map:
+					active_set = midi_map.find(map)
+					print(midi_map.find(map))
 
 func pad_press(pad_name):
 
