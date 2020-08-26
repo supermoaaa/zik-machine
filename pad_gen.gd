@@ -13,6 +13,7 @@ var Master_vol_midi = 13
 var looper = false
 var audio_set = []
 var active_set = 0
+var pad_number = 0
 
 func get_filelist(scan_dir : String) -> Array:
 	var my_files : Array = []
@@ -78,7 +79,7 @@ func _ready():
 
 	configFile.load(conf_machine)
 	active_set = configFile.get_value("PAD CONF", "BANK_active")
-	var pad_number = configFile.get_value("PAD CONF", "PAD_number")
+	pad_number = configFile.get_value("PAD CONF", "PAD_number")
 	audio_set = configFile.get_value("PAD CONF", "audio_set")
 	midi_map = configFile.get_value("PAD CONF", "midi_set")
 	Master_vol_midi = configFile.get_value("PAD CONF", "midi_master")
@@ -241,10 +242,16 @@ func _unhandled_input(event : InputEvent):
 					input_event.position = get_node(active_PAD).rect_global_position
 					get_tree().input_event(input_event)
 		else:
+			var pad_name = 0
 			for map in midi_map:
 				if key_index in map:
 					active_set = midi_map.find(map)
-					print(midi_map.find(map))
+					get_node("../info/Label").text = "MIDI BANK:" + str(active_set)
+					for play_instance in get_tree().get_nodes_in_group("song"):
+						play_instance.stream = load(audio_set[active_set][pad_name])
+						get_node("pad" + str(pad_name)).text = audio_set[active_set][pad_name].get_file ().left ( 6 )
+						pad_name += 1
+						
 
 func pad_press(pad_name):
 
