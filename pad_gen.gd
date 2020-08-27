@@ -277,9 +277,15 @@ func pad_change_sample(pad_name):
 		drag_file = false
 		$selfile.visible = false
 		var active_node = "pad" + str(pad_name)
+		var active_loop = get_node("loop"+ str(pad_name))
+		if active_loop.pressed == true :
+			get_node("play_instance"+str(pad_name)).stop()
+			
 		get_node(active_node).text = sel_file_name.left ( 6 )
 		get_node("play_instance"+str(pad_name)).stream = load(list_file[sel_file_name])
 		audio_set[active_set][pad_name] = list_file[sel_file_name]
+		if looper == true:
+			get_node("play_instance"+str(pad_name)).play()
 
 func volume_change(volume, number):
 	get_node("play_instance" + str(number)).volume_db = volume
