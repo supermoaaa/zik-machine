@@ -31,10 +31,10 @@
 [node name="main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.62485
-margin_top = -5.57131
-margin_right = 2.62488
-margin_bottom = -5.57129
+margin_left = 2.87485
+margin_top = -5.82131
+margin_right = 2.87488
+margin_bottom = -5.82129
 mouse_filter = 2
 script = ExtResource( 4 )
 __meta__ = {
@@ -65,23 +65,30 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -31.5
-margin_top = -16.5
-margin_right = 6.5
-margin_bottom = 16.5
+margin_left = -31.25
+margin_top = -17.0
+margin_right = 6.75
+margin_bottom = 16.0
 text = "X"
 
 [node name="edit" type="Button" parent="head/Control"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 920.386
-margin_top = -16.4265
-margin_right = 979.386
-margin_bottom = 16.5735
+margin_left = 876.171
+margin_top = -17.5939
+margin_right = 935.171
+margin_bottom = 15.4061
 text = "edit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="head/Control"]
+margin_left = 935.5
+margin_top = -2.75
+margin_right = 980.5
+margin_bottom = 30.25
+text = "INFO"
 
 [node name="body" type="Control" parent="."]
 anchor_top = 0.5
@@ -1021,8 +1028,34 @@ text = "MIDI BANK: 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Popupinfo" type="WindowDialog" parent="."]
+modulate = Color( 0.545098, 0.466667, 0.764706, 1 )
+self_modulate = Color( 0.372549, 0.45098, 0.478431, 1 )
+margin_left = 236.518
+margin_top = 178.301
+margin_right = 687.518
+margin_bottom = 398.301
+
+[node name="Button" type="Button" parent="Popupinfo"]
+margin_left = 194.023
+margin_top = 182.006
+margin_right = 259.023
+margin_bottom = 202.006
+text = "close"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Popupinfo"]
+margin_left = 23.0
+margin_top = 11.0
+margin_right = 428.0
+margin_bottom = 127.0
+text = "      ZIK MAACHINE
+	
+	author: moaaa
+	website:https://github.com/supermoaaa/zik-machine"
 [connection signal="pressed" from="head/Control/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="head/Control/edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="head/Control/Button" to="." method="_on_Button_pressed"]
 [connection signal="cell_selected" from="body/File_rep" to="body" method="_on_File_rep_cell_selected"]
 [connection signal="toggled" from="body/loop all" to="body" method="_on_Button_toggled"]
 [connection signal="pressed" from="body/save current bank" to="body" method="_on_save_current_bank_pressed"]
@@ -1058,3 +1091,4 @@ __meta__ = {
 [connection signal="item_selected" from="PopupPanel/Pad_Number_opt" to="PopupPanel" method="_on_Pad_Number_opt_item_selected"]
 [connection signal="item_selected" from="PopupPanel/bank" to="PopupPanel" method="_on_bank_item_selected"]
 [connection signal="timeout" from="noMidi/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="Popupinfo/Button" to="." method="_on_Button_close_pressed"]

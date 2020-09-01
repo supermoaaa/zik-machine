@@ -153,3 +153,9 @@ func _on_Timer_timeout():
 
 
 
+func _on_Button_pressed():
+	$Popupinfo.show()
+
+
+func _on_Button_close_pressed():
+	$Popupinfo.hide()
