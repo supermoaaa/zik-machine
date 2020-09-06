@@ -41,7 +41,7 @@ func get_filelist(scan_dir : String) -> Array:
 func load_wav_file():
 	var file_rep = get_node("File_rep")
 	var root = file_rep.create_item()
-	root.set_text(0, "file")
+	root.set_text(0, "sample")
 	
 	var file = File.new()
 	var list_wav = []
