@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hiphopbeat.wav-5578a2730a0d1e0567c51b5cfb5ba14f.sample"
+
+[deps]
+
+source_file="res://loop/hiphopbeat.wav"
+dest_files=[ "res://.import/hiphopbeat.wav-5578a2730a0d1e0567c51b5cfb5ba14f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
