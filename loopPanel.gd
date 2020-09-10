@@ -5,7 +5,7 @@ extends ColorRect
 
 var conf_file = "res://conf.cfg"
 var list_file = []
-# var b = "text"
+var playing = 0
 
 
 func load_wav_file():
@@ -33,6 +33,7 @@ func _ready():
 	var loop_instance = AudioStreamPlayer.new()
 	loop_instance.name = "loop_stream"
 	loop_instance.stream = load("res://loop/"+list_file[0])
+	loop_instance.connect("finished", self, "audio_stat")
 	#loop_instance.loop = true
 	self.add_child(loop_instance)
 
@@ -51,6 +52,7 @@ func _on_playLoop_pressed():
 		$loop_stream.stream_paused = false
 	else:
 		$loop_stream.play()
+		playing = 1
 		
 func _on_pauseLoop_pressed():
 	$stopLoop.pressed = false
@@ -67,8 +69,7 @@ func _on_stopLoop_pressed():
 	$pauseLoop.pressed = false
 	
 	$loop_stream.stop()
-	
-	
+	playing = 0
 
 
 func _on_LoopTrack_item_selected(id):
@@ -78,5 +79,7 @@ func _on_LoopTrack_item_selected(id):
 func _on_loopVolume_value_changed(value):
 	$loop_stream.volume_db = value
 
-
+func audio_stat():
+	if playing == 1:
+		get_node("loop_stream").play()
 
