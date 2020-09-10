@@ -13,8 +13,7 @@ func _draw():
 # warning-ignore:integer_division
 	var w = WIDTH / VU_COUNT
 	var prev_hz = 0
-	
-	
+
 	for i in range(1,VU_COUNT+1):	
 		var hz = i * FREQ_MAX / VU_COUNT;
 		var f = spectrum.get_magnitude_for_frequency_range(prev_hz,hz)

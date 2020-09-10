@@ -106,7 +106,6 @@ func _on_edit_pressed():
 	$PopupPanel.show()
 
 
-
 func _on_exit_pressed():
 	$PopupPanel.hide()
 
@@ -150,7 +149,6 @@ func _unhandled_input(event : InputEvent):
 # end of midi message
 func _on_Timer_timeout():
 	$noMidi.hide()
-
 
 
 func _on_Button_pressed():

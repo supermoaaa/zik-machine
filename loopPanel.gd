@@ -24,7 +24,6 @@ func load_wav_file():
 		file_rep.add_item(rep)
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	var configFile = ConfigFile.new()
 	configFile.load(conf_file)

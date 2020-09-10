@@ -5,14 +5,8 @@ extends ColorRect
 
 var bus_delay = "none"
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func _on_ButtonMicro_toggled(button_pressed):
@@ -48,8 +42,6 @@ func _on_Button_delay_on_toggled(button_pressed):
 		$micro_effect_Panel/Button_delay_on.text = "on"
 
 
-
-
 func _on_HSlider_value_changed(value):
 		AudioServer.get_bus_effect(1, 1).set_tap1_delay_ms(value)
 
@@ -60,7 +52,6 @@ func _on_Check_feedback_toggled(button_pressed):
 		
 	else:
 		AudioServer.get_bus_effect(1, 1).set_feedback_active(false)
-		
 
 
 func _on_HSlider2_value_changed(value):
@@ -82,7 +73,6 @@ func _on_Button_phaser_toggled(button_pressed):
 
 func _on_feed_phaser_scroll_value_changed(value):
 	AudioServer.get_bus_effect(1, 2).set_feedback(value/10)
-
 
 func _on_HSlider_deth_phaser_value_changed(value):
 	AudioServer.get_bus_effect(1, 2).set_depth(value/10)
