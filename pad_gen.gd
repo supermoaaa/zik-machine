@@ -38,10 +38,8 @@ func get_filelist(scan_dir : String) -> Array:
 	
 	return my_files
 	
-func load_wav_file():
-	var file_rep = get_node("File_rep")
-	var root = file_rep.create_item()
-	root.set_text(0, "sample")
+func load_wav_file(root):
+
 	
 	var file = File.new()
 	var list_wav = []
@@ -56,7 +54,7 @@ func load_wav_file():
 		list_wav.append(file.get_line())
 	#print(list_wav)
 	for rep in list_wav:
-		var start_rep = file_rep.create_item(root)
+		var start_rep = get_node("File_rep").create_item(root)
 		start_rep.set_text(0, str(rep.get_file ()))
 		list_file[rep.get_file ()] = rep
 
@@ -71,7 +69,11 @@ func _process(_delta):
 
 
 func _ready():
-	load_wav_file() 
+	var file_rep = get_node("File_rep")
+	var root = file_rep.create_item()
+	root.set_text(0, "sample")
+	load_wav_file(root)
+	
 	var pad_name = 0
 	var configFile = ConfigFile.new()
 	configFile.load(conf_file)
