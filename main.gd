@@ -70,7 +70,7 @@ func _ready():
 	var list_machine = get_conf_list("res://model/")
 
 	OS.open_midi_inputs()
-	load_file("res://loop/", "res://loop_path.sav", false)
+	load_file("res://loop/", "res://loop_path.sav", true)
 	load_file("res://sample/", "res://sample_path.sav", true)
 	
 	for current_midi_input in OS.get_connected_midi_inputs():

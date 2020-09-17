@@ -31,7 +31,7 @@ func _ready():
 
 	var loop_instance = AudioStreamPlayer.new()
 	loop_instance.name = "loop_stream"
-	loop_instance.stream = load("res://loop/"+list_file[0])
+	loop_instance.stream = load(list_file[0])
 	loop_instance.connect("finished", self, "audio_stat")
 	#loop_instance.loop = true
 	self.add_child(loop_instance)
@@ -72,7 +72,7 @@ func _on_stopLoop_pressed():
 
 
 func _on_LoopTrack_item_selected(id):
-	get_node("loop_stream").stream = load("res://loop/"+str(list_file[id]))
+	get_node("loop_stream").stream = load(str(list_file[id]))
 
 
 func _on_loopVolume_value_changed(value):

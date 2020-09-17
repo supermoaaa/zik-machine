@@ -70,7 +70,7 @@ func _process(_delta):
 func _ready():
 	
 	var file_rep = get_node("File_rep")
-	var root_rep = $File_rep.create_item(file_rep)
+	$File_rep.create_item(file_rep)
 	file_rep.set_hide_root(true)
 	var sample_rep = file_rep.create_item(file_rep)
 	sample_rep.set_text(0, "sample")
