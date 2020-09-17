@@ -38,15 +38,14 @@ func get_filelist(scan_dir : String) -> Array:
 	
 	return my_files
 	
-func load_wav_file(root):
+func load_wav_file(root, path):
 
-	
 	var file = File.new()
 	var list_wav = []
-	if not file.file_exists("res://sample_path.sav"):
+	if not file.file_exists(path):
 		print("No file detected")
 		return
-	if file.open("res://sample_path.sav", File.READ) != 0:
+	if file.open(path, File.READ) != 0:
 		print("Error opening file")
 		return
 	
@@ -70,9 +69,9 @@ func _process(_delta):
 
 func _ready():
 	var file_rep = get_node("File_rep")
-	var root = file_rep.create_item()
-	root.set_text(0, "sample")
-	load_wav_file(root)
+	var sample_rep = file_rep.create_item()
+	sample_rep.set_text(0, "sample")
+	load_wav_file(sample_rep, "res://sample_path.sav")
 	
 	var pad_name = 0
 	var configFile = ConfigFile.new()
