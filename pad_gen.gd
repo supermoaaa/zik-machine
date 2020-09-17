@@ -68,10 +68,16 @@ func _process(_delta):
 
 
 func _ready():
+	
 	var file_rep = get_node("File_rep")
-	var sample_rep = file_rep.create_item()
+	$File_rep.create_item(file_rep)
+	var sample_rep = file_rep.create_item(file_rep)
 	sample_rep.set_text(0, "sample")
 	load_wav_file(sample_rep, "res://sample_path.sav")
+	
+	var loop_rep = file_rep.create_item(file_rep)
+	loop_rep.set_text(0, "loop")
+	load_wav_file(loop_rep, "res://loop_path.sav")
 	
 	var pad_name = 0
 	var configFile = ConfigFile.new()
