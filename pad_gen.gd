@@ -72,12 +72,15 @@ func _ready():
 	var file_rep = get_node("File_rep")
 	$File_rep.create_item(file_rep)
 	file_rep.set_hide_root(true)
+	
 	var sample_rep = file_rep.create_item(file_rep)
 	sample_rep.set_text(0, "sample")
+	sample_rep.set_selectable(0, false)
 	load_wav_file(sample_rep, "res://sample_path.sav")
 	
 	var loop_rep = file_rep.create_item(file_rep)
 	loop_rep.set_text(0, "loop")
+	loop_rep.set_selectable(0, false)
 	load_wav_file(loop_rep, "res://loop_path.sav")
 	
 	var pad_name = 0
