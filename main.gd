@@ -30,7 +30,7 @@ func get_filelist(scan_dir : String) -> Array:
 	
 	return my_files
 
-func load_file(PATH, file_out, flag_path):
+func load_file(PATH, file_out):
 	var my_loops : Array = []
 	for rep in get_filelist(PATH):
 		my_loops.append(rep)
@@ -41,10 +41,8 @@ func load_file(PATH, file_out, flag_path):
 		print("Error opening file")
 		return
 	for files in my_loops:
-		if flag_path == true:
-			file.store_line(files)
-		else:
-			file.store_line(files.get_file ())
+		file.store_line(files)
+
 	file.close()
 
 
@@ -70,8 +68,8 @@ func _ready():
 	var list_machine = get_conf_list("res://model/")
 
 	OS.open_midi_inputs()
-	load_file("res://loop/", "res://loop_path.sav", true)
-	load_file("res://sample/", "res://sample_path.sav", true)
+	load_file("res://loop/", "res://loop_path.sav")
+	load_file("res://sample/", "res://sample_path.sav")
 	
 	for current_midi_input in OS.get_connected_midi_inputs():
 		if not current_midi_input in list_machine:
