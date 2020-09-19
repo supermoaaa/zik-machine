@@ -76,11 +76,13 @@ func _ready():
 	var sample_rep = file_rep.create_item(file_rep)
 	sample_rep.set_text(0, "sample")
 	sample_rep.set_selectable(0, false)
+	sample_rep.set_collapsed(true)
 	load_wav_file(sample_rep, "res://sample_path.sav")
 	
 	var loop_rep = file_rep.create_item(file_rep)
 	loop_rep.set_text(0, "loop")
 	loop_rep.set_selectable(0, false)
+	loop_rep.set_collapsed(true)
 	load_wav_file(loop_rep, "res://loop_path.sav")
 	
 	var pad_name = 0
@@ -327,7 +329,7 @@ func _on_Button_toggled(button_pressed):
 
 
 func _on_save_current_bank_pressed():
-	print(audio_set[active_set])
+	#print(audio_set[active_set])
 	var configFile = ConfigFile.new()
 	configFile.load(conf_machine)
 	configFile.set_value("PAD CONF", "audio_set", audio_set)
