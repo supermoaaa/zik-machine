@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://utils/rec_off.png" type="Texture" id=1]
 [ext_resource path="res://utils/rec_over.png" type="Texture" id=2]
@@ -26,6 +26,9 @@
 [ext_resource path="res://master_compress.gd" type="Script" id=24]
 [ext_resource path="res://body theme.tres" type="Theme" id=25]
 [ext_resource path="res://info.gd" type="Script" id=26]
+[ext_resource path="res://utils/sound_on.png" type="Texture" id=27]
+[ext_resource path="res://utils/sound_over.png" type="Texture" id=28]
+[ext_resource path="res://utils/sound_off.png" type="Texture" id=29]
 
 [sub_resource type="AudioStreamMicrophone" id=1]
 
@@ -33,9 +36,9 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.87485
-margin_top = -5.82131
+margin_top = -7.15615
 margin_right = 2.87488
-margin_bottom = -5.82129
+margin_bottom = -7.15613
 mouse_filter = 2
 script = ExtResource( 4 )
 __meta__ = {
@@ -135,10 +138,10 @@ __meta__ = {
 volume_db = -10.47
 
 [node name="loop all" type="Button" parent="body"]
-margin_left = 9.62158
-margin_top = 407.0
-margin_right = 92.6216
-margin_bottom = 432.0
+margin_left = 7.7487
+margin_top = 418.121
+margin_right = 90.7487
+margin_bottom = 443.121
 theme = ExtResource( 11 )
 toggle_mode = true
 text = "loop all"
@@ -147,11 +150,25 @@ __meta__ = {
 }
 
 [node name="save current bank" type="Button" parent="body"]
-margin_left = 2.04591
-margin_top = 357.398
-margin_right = 127.046
-margin_bottom = 379.398
+margin_left = 0.904721
+margin_top = 390.329
+margin_right = 125.905
+margin_bottom = 412.329
 text = "save current bank"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="body"]
+margin_left = 39.0
+margin_top = 356.0
+margin_right = 72.0
+margin_bottom = 387.0
+toggle_mode = true
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 28 )
+expand = true
 
 [node name="foot" type="Control" parent="."]
 anchor_top = 1.0
