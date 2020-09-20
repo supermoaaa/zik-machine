@@ -315,7 +315,8 @@ func audio_stat(pad_name):
 
 func _on_File_rep_cell_selected():
 	$sound_file.stream = load(list_file[get_node("File_rep").get_selected().get_text(0)])
-	$sound_file.play()
+	if $MuteButtonItem.pressed == false:
+		$sound_file.play()
 	$selfile.set_position(get_local_mouse_position())
 	$selfile.visible = true
 	drag_file = true
@@ -338,3 +339,8 @@ func _on_save_current_bank_pressed():
 	configFile.load(conf_machine)
 	configFile.set_value("PAD CONF", "audio_set", audio_set)
 	configFile.save(conf_machine)
+
+
+func _on_MuteButtonItem_toggled(button_pressed):
+	if $MuteButtonItem.pressed == true:
+		$sound_file.stop()
