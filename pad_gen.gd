@@ -145,6 +145,7 @@ func _ready():
 		mute_button.texture_pressed = load("res://utils/bt_on.png")
 		mute_button.expand = true
 		mute_button.toggle_mode = true
+		mute_button.connect("button_down", self, "mute_press", [pad_name])
 		
 		var mute_text = Label.new()
 		mute_text.text = "mute"
@@ -284,6 +285,9 @@ func pad_press(pad_name):
 				active_stream.play()
 				
 
+func mute_press(pad_name):
+	get_node("play_instance" + str(pad_name)).stop()
+	
 func pad_change_sample(pad_name):
 	if drag_file == true:
 		var sel_file_name = get_node("File_rep").get_selected().get_text(0)
