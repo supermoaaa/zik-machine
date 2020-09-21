@@ -154,6 +154,7 @@ margin_left = 0.904721
 margin_top = 390.329
 margin_right = 125.905
 margin_bottom = 412.329
+theme = ExtResource( 11 )
 text = "save current bank"
 __meta__ = {
 "_edit_use_anchors_": false
