@@ -341,6 +341,6 @@ func _on_save_current_bank_pressed():
 	configFile.save(conf_machine)
 
 
-func _on_MuteButtonItem_toggled(button_pressed):
+func _on_MuteButtonItem_toggled(_button_pressed):
 	if $MuteButtonItem.pressed == true:
 		$sound_file.stop()

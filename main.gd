@@ -45,7 +45,6 @@ func load_file(PATH, file_out):
 
 	file.close()
 
-
 func get_conf_list(path):
 	var files = []
 	var dir = Directory.new()
@@ -92,7 +91,6 @@ func _ready():
 		print("Device no detected")
 		$noMidi.show()
 
-
 func _process(_delta):
 	if Input.is_action_just_released("record"):
 		if $foot/ColorRect/Rec_Button.pressed == false:
@@ -103,10 +101,8 @@ func _process(_delta):
 func _on_edit_pressed():
 	$PopupPanel.show()
 
-
 func _on_exit_pressed():
 	$PopupPanel.hide()
-
 
 func _on_quit_pressed():
 	get_tree().quit()
@@ -130,7 +126,6 @@ func get_midi_message_description(event : InputEventMIDI):
 		return GlobalScope_MidiMessageList.keys()[event.message - 0x08]
 	#print(event.message)
 
-
 func _unhandled_input(event : InputEvent):
 	if (event is InputEventMIDI):
 		
@@ -144,14 +139,12 @@ func _unhandled_input(event : InputEvent):
 			get_node("foot/ColorRect/loopPanel/loop_stream").volume_db = (event.controller_value *0.78)-80
 			get_node("foot/ColorRect/loopPanel/loopVolume").value = (event.controller_value *0.78)-80
 
-# end of midi message
+
 func _on_Timer_timeout():
 	$noMidi.hide()
 
-
 func _on_Button_pressed():
 	$Popupinfo.show()
-
 
 func _on_Button_close_pressed():
 	$Popupinfo.hide()
