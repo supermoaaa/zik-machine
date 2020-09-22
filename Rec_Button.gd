@@ -5,6 +5,7 @@ extends TextureButton
 
 var file_to_load= "res://conf.cfg"
 var save_song = "res://record/"
+var song_name = "default.wav"
 var recordingeffectmaster = AudioServer.get_bus_effect(0, 0)
 
 # Called when the node enters the scene tree for the first time.
@@ -29,5 +30,9 @@ func _on_Rec_Button_toggled(button_pressed):
 
 		recordingeffectmaster.set_recording_active(false)
 		var final_recording = recordingeffectmaster.get_recording()
-		final_recording.save_to_wav(save_song+"test.wav")
+		final_recording.save_to_wav(save_song+song_name)
 
+
+
+func _on_LineEdit_text_entered(new_text):
+	song_name = new_text + ".wav"
