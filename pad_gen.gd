@@ -77,6 +77,7 @@ func _ready():
 	sample_rep.set_text(0, "sample")
 	sample_rep.set_selectable(0, false)
 	sample_rep.set_collapsed(true)
+	sample_rep.set_custom_color(0, Color(0.5, 0.8, 0.0, 1.0))
 	load_wav_file(sample_rep, "res://sample_path.sav")
 	
 	var loop_rep = file_rep.create_item(file_rep)
