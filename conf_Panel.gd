@@ -110,3 +110,7 @@ func _on_bank_item_selected(index):
 
 func _on_pad_conf_pressed():
 	$pad_conf_panel.visible= true
+
+
+func _on_Button_close_pressed():
+	$pad_conf_panel.visible= false
