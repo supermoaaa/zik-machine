@@ -1006,6 +1006,19 @@ margin_right = 581.876
 margin_bottom = 100.344
 text = "midi button  detected:"
 
+[node name="pad_conf" type="Button" parent="PopupPanel"]
+margin_left = 859.041
+margin_top = 241.737
+margin_right = 932.041
+margin_bottom = 261.737
+text = "pad conf"
+
+[node name="pad_conf_panel" type="PopupPanel" parent="PopupPanel"]
+margin_left = 214.0
+margin_top = 97.0
+margin_right = 717.0
+margin_bottom = 402.0
+
 [node name="Audio_out" type="AudioStreamPlayer" parent="."]
 
 [node name="noMidi" type="PopupPanel" parent="."]
@@ -1124,5 +1137,6 @@ script = ExtResource( 26 )
 [connection signal="pressed" from="PopupPanel/output_change" to="PopupPanel" method="_on_output_change_pressed"]
 [connection signal="item_selected" from="PopupPanel/Pad_Number_opt" to="PopupPanel" method="_on_Pad_Number_opt_item_selected"]
 [connection signal="item_selected" from="PopupPanel/bank" to="PopupPanel" method="_on_bank_item_selected"]
+[connection signal="pressed" from="PopupPanel/pad_conf" to="PopupPanel" method="_on_pad_conf_pressed"]
 [connection signal="timeout" from="noMidi/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="Popupinfo/Button" to="." method="_on_Button_close_pressed"]

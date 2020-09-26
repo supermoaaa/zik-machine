@@ -106,3 +106,7 @@ func _on_bank_item_selected(index):
 	configFile.load(conf_machine)
 	configFile.set_value("PAD CONF","BANK_number",str(index+1))
 	configFile.save(conf_machine)
+
+
+func _on_pad_conf_pressed():
+	$pad_conf_panel.visible= true
