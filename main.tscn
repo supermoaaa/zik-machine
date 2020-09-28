@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://utils/rec_off.png" type="Texture" id=1]
 [ext_resource path="res://utils/rec_over.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://utils/sound_on.png" type="Texture" id=27]
 [ext_resource path="res://utils/sound_over.png" type="Texture" id=28]
 [ext_resource path="res://utils/sound_off.png" type="Texture" id=29]
+[ext_resource path="res://pad_conf_midi.gd" type="Script" id=30]
 
 [sub_resource type="AudioStreamMicrophone" id=1]
 
@@ -1018,6 +1019,10 @@ margin_left = 214.0
 margin_top = 97.0
 margin_right = 717.0
 margin_bottom = 402.0
+script = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="close_pad_panel" type="Button" parent="PopupPanel/pad_conf_panel"]
 margin_left = 204.264
@@ -1025,6 +1030,12 @@ margin_top = 273.382
 margin_right = 262.264
 margin_bottom = 294.382
 text = "save and close"
+
+[node name="GridContainer" type="GridContainer" parent="PopupPanel/pad_conf_panel"]
+margin_left = 76.0
+margin_top = 33.0
+margin_right = 443.0
+margin_bottom = 237.0
 
 [node name="Audio_out" type="AudioStreamPlayer" parent="."]
 
