@@ -1031,11 +1031,26 @@ margin_right = 262.264
 margin_bottom = 294.382
 text = "save and close"
 
-[node name="GridContainer" type="GridContainer" parent="PopupPanel/pad_conf_panel"]
-margin_left = 76.0
-margin_top = 33.0
-margin_right = 443.0
-margin_bottom = 237.0
+[node name="CenterMidi" type="CenterContainer" parent="PopupPanel/pad_conf_panel"]
+margin_left = 89.0
+margin_top = 40.0
+margin_right = 434.0
+margin_bottom = 219.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="PopupPanel/pad_conf_panel/CenterMidi"]
+margin_left = 172.0
+margin_top = 89.0
+margin_right = 172.0
+margin_bottom = 89.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.05
 
 [node name="Audio_out" type="AudioStreamPlayer" parent="."]
 
