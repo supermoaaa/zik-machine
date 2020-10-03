@@ -1036,9 +1036,9 @@ margin_left = 42.0
 margin_top = 77.0
 margin_right = 486.0
 margin_bottom = 261.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 5.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 5.63
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1050,7 +1050,7 @@ margin_right = 222.0
 margin_bottom = 92.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-size_flags_stretch_ratio = 3.05
+size_flags_stretch_ratio = 5.41
 
 [node name="Audio_out" type="AudioStreamPlayer" parent="."]
 
