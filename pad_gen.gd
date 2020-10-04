@@ -232,7 +232,7 @@ func _unhandled_input(event : InputEvent):
 		
 		#print(midi_map)
 		if key_index in midi_map[active_set]:
-			print("key=" + str(midi_map[active_set].find(key_index)))
+			#print("key=" + str(midi_map[active_set].find(key_index)))
 			var active_PAD = "pad" + str(midi_map[active_set].find(key_index))
 			var active_vel = "vel" + str(midi_map[active_set].find(key_index))
 

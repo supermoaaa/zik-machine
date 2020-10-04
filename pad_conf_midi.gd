@@ -43,6 +43,35 @@ func midi_learn(bt):
 				midi_bt.text = str(midi_map[active_set][int(midi_bt.name)])
 			midi_bt.pressed = false
 
+
+enum GlobalScope_MidiMessageList {
+	MIDI_MESSAGE_NOTE_OFF = 0x8,
+	MIDI_MESSAGE_NOTE_ON = 0x9,
+	MIDI_MESSAGE_AFTERTOUCH = 0xA,
+	MIDI_MESSAGE_CONTROL_CHANGE = 0xB,
+	MIDI_MESSAGE_PROGRAM_CHANGE = 0xC,
+	MIDI_MESSAGE_CHANNEL_PRESSURE = 0xD,
+	MIDI_MESSAGE_PITCH_BEND = 0xE,
+};
+
+func get_midi_message_description(event : InputEventMIDI):
+	if GlobalScope_MidiMessageList.values().has(event.message):
+		return GlobalScope_MidiMessageList.keys()[event.message - 0x08]
+	#print(event.message)
+	
+func _unhandled_input(event : InputEvent):
+	var midi_bt_node = get_tree().get_nodes_in_group("midi_bt")
+
+	if (event is InputEventMIDI):
+
+		var key_index = event.pitch
+		print(key_index)
+		for midi_bt in midi_bt_node:
+			if midi_bt.pressed == true:
+				midi_map[active_set][int(midi_bt.name)] = key_index
+				midi_bt.text = str(key_index)
+				midi_bt.pressed = false
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
