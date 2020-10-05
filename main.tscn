@@ -969,23 +969,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bank" type="OptionButton" parent="PopupPanel"]
-margin_left = 877.189
-margin_top = 176.887
-margin_right = 938.189
-margin_bottom = 199.887
-text = "none"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="bank_label" type="Label" parent="PopupPanel"]
-margin_left = 768.799
-margin_top = 181.391
-margin_right = 866.799
-margin_bottom = 196.391
-text = "BANK number :"
-
 [node name="sound_driver" type="Label" parent="PopupPanel"]
 margin_left = 141.0
 margin_top = 76.0
@@ -1169,7 +1152,6 @@ script = ExtResource( 26 )
 [connection signal="dir_selected" from="PopupPanel/FileDialog" to="PopupPanel" method="_on_FileDialog_dir_selected"]
 [connection signal="pressed" from="PopupPanel/output_change" to="PopupPanel" method="_on_output_change_pressed"]
 [connection signal="item_selected" from="PopupPanel/Pad_Number_opt" to="PopupPanel" method="_on_Pad_Number_opt_item_selected"]
-[connection signal="item_selected" from="PopupPanel/bank" to="PopupPanel" method="_on_bank_item_selected"]
 [connection signal="pressed" from="PopupPanel/pad_conf" to="PopupPanel" method="_on_pad_conf_pressed"]
 [connection signal="pressed" from="PopupPanel/pad_conf_panel/close_pad_panel" to="PopupPanel" method="_on_Button_close_pressed"]
 [connection signal="timeout" from="noMidi/Timer" to="." method="_on_Timer_timeout"]

@@ -65,7 +65,6 @@ func _unhandled_input(event : InputEvent):
 	if (event is InputEventMIDI):
 
 		var key_index = event.pitch
-		print(key_index)
 		for midi_bt in midi_bt_node:
 			if midi_bt.pressed == true:
 				midi_map[active_set][int(midi_bt.name)] = key_index
