@@ -70,7 +70,15 @@ func _unhandled_input(event : InputEvent):
 				midi_map[active_set][int(midi_bt.name)] = key_index
 				midi_bt.text = str(key_index)
 				midi_bt.pressed = false
-		
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+
+func _on_save_pad_panel_pressed():
+	var configFile = ConfigFile.new()
+	configFile.load(conf_machine)
+	configFile.set_value("PAD CONF", "midi_set", midi_map)
+	configFile.save(conf_machine)

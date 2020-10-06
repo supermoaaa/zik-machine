@@ -1008,17 +1008,30 @@ __meta__ = {
 }
 
 [node name="close_pad_panel" type="Button" parent="PopupPanel/pad_conf_panel"]
-margin_left = 204.264
-margin_top = 273.382
-margin_right = 262.264
-margin_bottom = 294.382
-text = "save and close"
+margin_left = 279.804
+margin_top = 275.883
+margin_right = 337.804
+margin_bottom = 296.883
+text = " close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save_pad_panel" type="Button" parent="PopupPanel/pad_conf_panel"]
+margin_left = 217.595
+margin_top = 275.883
+margin_right = 275.595
+margin_bottom = 296.883
+text = "save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CenterMidi" type="CenterContainer" parent="PopupPanel/pad_conf_panel"]
-margin_left = 42.0
-margin_top = 77.0
-margin_right = 486.0
-margin_bottom = 261.0
+margin_left = 69.6694
+margin_top = 100.002
+margin_right = 404.669
+margin_bottom = 261.002
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 5.63
@@ -1027,10 +1040,10 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="PopupPanel/pad_conf_panel/CenterMidi"]
-margin_left = 222.0
-margin_top = 92.0
-margin_right = 222.0
-margin_bottom = 92.0
+margin_left = 167.0
+margin_top = 80.0
+margin_right = 167.0
+margin_bottom = 80.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 5.41
@@ -1153,6 +1166,7 @@ script = ExtResource( 26 )
 [connection signal="pressed" from="PopupPanel/output_change" to="PopupPanel" method="_on_output_change_pressed"]
 [connection signal="item_selected" from="PopupPanel/Pad_Number_opt" to="PopupPanel" method="_on_Pad_Number_opt_item_selected"]
 [connection signal="pressed" from="PopupPanel/pad_conf" to="PopupPanel" method="_on_pad_conf_pressed"]
-[connection signal="pressed" from="PopupPanel/pad_conf_panel/close_pad_panel" to="PopupPanel" method="_on_Button_close_pressed"]
+[connection signal="pressed" from="PopupPanel/pad_conf_panel/close_pad_panel" to="PopupPanel" method="_on_close_pad_panel_pressed"]
+[connection signal="pressed" from="PopupPanel/pad_conf_panel/save_pad_panel" to="PopupPanel/pad_conf_panel" method="_on_save_pad_panel_pressed"]
 [connection signal="timeout" from="noMidi/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="Popupinfo/Button" to="." method="_on_Button_close_pressed"]

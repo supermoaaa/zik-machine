@@ -13,14 +13,7 @@ func _ready():
 	$Pad_Number_opt.add_item("8 pad")
 	$Pad_Number_opt.add_item("16 pad")
 	
-	$bank.add_item("none")
-	$bank.add_item("2")
-	$bank.add_item("3")
-	$bank.add_item("4")
-	$bank.add_item("5")
-	$bank.add_item("6")
-	$bank.add_item("7")
-	$bank.add_item("8")
+
 	
 	var configFile = ConfigFile.new()
 	configFile.load(conf_file) 
@@ -103,8 +96,9 @@ func _unhandled_input(event : InputEvent):
 
 
 func _on_pad_conf_pressed():
-	$pad_conf_panel.visible= true
+	$pad_conf_panel.show()
 
 
-func _on_Button_close_pressed():
-	$pad_conf_panel.visible= false
+
+func _on_close_pad_panel_pressed():
+	$pad_conf_panel.hide()
