@@ -1048,6 +1048,40 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 5.41
 
+[node name="Label_midi" type="Label" parent="PopupPanel/pad_conf_panel"]
+margin_left = 179.918
+margin_top = 69.2679
+margin_right = 325.918
+margin_bottom = 83.2679
+text = "pad map configuration:"
+
+[node name="bank_bloc" type="HBoxContainer" parent="PopupPanel/pad_conf_panel"]
+margin_left = 35.0
+margin_top = 15.0
+margin_right = 184.0
+margin_bottom = 38.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_down_bank" type="Button" parent="PopupPanel/pad_conf_panel/bank_bloc"]
+margin_right = 17.0
+margin_bottom = 23.0
+text = "-"
+
+[node name="bank_status" type="Label" parent="PopupPanel/pad_conf_panel/bank_bloc"]
+margin_left = 21.0
+margin_top = 4.0
+margin_right = 125.0
+margin_bottom = 18.0
+text = "active bank: 1 "
+
+[node name="Button_up_bank" type="Button" parent="PopupPanel/pad_conf_panel/bank_bloc"]
+margin_left = 129.0
+margin_right = 149.0
+margin_bottom = 23.0
+text = "+"
+
 [node name="Audio_out" type="AudioStreamPlayer" parent="."]
 
 [node name="noMidi" type="PopupPanel" parent="."]
@@ -1168,5 +1202,7 @@ script = ExtResource( 26 )
 [connection signal="pressed" from="PopupPanel/pad_conf" to="PopupPanel" method="_on_pad_conf_pressed"]
 [connection signal="pressed" from="PopupPanel/pad_conf_panel/close_pad_panel" to="PopupPanel" method="_on_close_pad_panel_pressed"]
 [connection signal="pressed" from="PopupPanel/pad_conf_panel/save_pad_panel" to="PopupPanel/pad_conf_panel" method="_on_save_pad_panel_pressed"]
+[connection signal="pressed" from="PopupPanel/pad_conf_panel/bank_bloc/Button_down_bank" to="PopupPanel/pad_conf_panel" method="_on_Button_down_bank_pressed"]
+[connection signal="pressed" from="PopupPanel/pad_conf_panel/bank_bloc/Button_up_bank" to="PopupPanel/pad_conf_panel" method="_on_Button_up_bank_pressed"]
 [connection signal="timeout" from="noMidi/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="Popupinfo/Button" to="." method="_on_Button_close_pressed"]

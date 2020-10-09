@@ -4,6 +4,7 @@ var conf_machine = ""
 var conf_file = "res://conf.cfg"
 var pad = 16
 var active_set = 0
+var bank_number = 0
 var midi_map = []
 
 
@@ -14,6 +15,8 @@ func _ready():
 	configFile.load(conf_machine)
 	pad = configFile.get_value("PAD CONF", "PAD_number")
 	midi_map = configFile.get_value("PAD CONF", "midi_set")
+	bank_number = len(midi_map)
+	#print("bank "+ str(bank_number))
 	
 	$CenterMidi/GridContainer.columns = pad/4
 	for bt in pad:
@@ -43,6 +46,10 @@ func midi_learn(bt):
 				midi_bt.text = str(midi_map[active_set][int(midi_bt.name)])
 			midi_bt.pressed = false
 
+func set_current_pad_tab():
+	for bt in get_tree().get_nodes_in_group("midi_bt"):
+		bt.text = str(midi_map[active_set][int(bt.name)])
+	
 
 enum GlobalScope_MidiMessageList {
 	MIDI_MESSAGE_NOTE_OFF = 0x8,
@@ -82,3 +89,20 @@ func _on_save_pad_panel_pressed():
 	configFile.load(conf_machine)
 	configFile.set_value("PAD CONF", "midi_set", midi_map)
 	configFile.save(conf_machine)
+
+
+func _on_Button_down_bank_pressed():
+	if active_set > 0:
+		active_set = active_set-1
+		$bank_bloc/bank_status.text = "active bank: " +str(active_set+1)
+		set_current_pad_tab()
+
+
+func _on_Button_up_bank_pressed():
+	if active_set == bank_number:
+		$bank_bloc/Button_up_bank.text = "add"
+		
+	elif active_set < bank_number-1:
+		active_set = active_set+1
+		$bank_bloc/bank_status.text = "active bank: " +str(active_set+1)
+		set_current_pad_tab()
