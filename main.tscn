@@ -998,10 +998,10 @@ margin_bottom = 261.737
 text = "pad conf"
 
 [node name="pad_conf_panel" type="WindowDialog" parent="PopupPanel"]
-margin_left = 214.0
-margin_top = 97.0
-margin_right = 717.0
-margin_bottom = 402.0
+margin_left = 215.246
+margin_top = 94.3713
+margin_right = 718.245
+margin_bottom = 399.371
 script = ExtResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1054,33 +1054,48 @@ margin_top = 69.2679
 margin_right = 325.918
 margin_bottom = 83.2679
 text = "pad map configuration:"
-
-[node name="bank_bloc" type="HBoxContainer" parent="PopupPanel/pad_conf_panel"]
-margin_left = 35.0
-margin_top = 15.0
-margin_right = 184.0
-margin_bottom = 38.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="bank_bloc" type="HBoxContainer" parent="PopupPanel/pad_conf_panel"]
+margin_left = 19.0
+margin_top = 12.0
+margin_right = 266.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="remove_bank" type="Button" parent="PopupPanel/pad_conf_panel/bank_bloc"]
+margin_right = 61.0
+margin_bottom = 21.0
+text = "remove"
+
 [node name="Button_down_bank" type="Button" parent="PopupPanel/pad_conf_panel/bank_bloc"]
-margin_right = 17.0
-margin_bottom = 23.0
+margin_left = 65.0
+margin_right = 82.0
+margin_bottom = 21.0
 text = "-"
 
 [node name="bank_status" type="Label" parent="PopupPanel/pad_conf_panel/bank_bloc"]
-margin_left = 21.0
-margin_top = 4.0
-margin_right = 125.0
-margin_bottom = 18.0
+margin_left = 86.0
+margin_top = 3.0
+margin_right = 178.0
+margin_bottom = 17.0
 text = "active bank: 1 "
 
 [node name="Button_up_bank" type="Button" parent="PopupPanel/pad_conf_panel/bank_bloc"]
-margin_left = 129.0
-margin_right = 149.0
-margin_bottom = 23.0
+margin_left = 182.0
+margin_right = 202.0
+margin_bottom = 21.0
 text = "+"
+
+[node name="add_bank" type="Button" parent="PopupPanel/pad_conf_panel/bank_bloc"]
+margin_left = 206.0
+margin_right = 247.0
+margin_bottom = 21.0
+text = "ADD"
 
 [node name="Audio_out" type="AudioStreamPlayer" parent="."]
 
@@ -1202,7 +1217,9 @@ script = ExtResource( 26 )
 [connection signal="pressed" from="PopupPanel/pad_conf" to="PopupPanel" method="_on_pad_conf_pressed"]
 [connection signal="pressed" from="PopupPanel/pad_conf_panel/close_pad_panel" to="PopupPanel" method="_on_close_pad_panel_pressed"]
 [connection signal="pressed" from="PopupPanel/pad_conf_panel/save_pad_panel" to="PopupPanel/pad_conf_panel" method="_on_save_pad_panel_pressed"]
+[connection signal="pressed" from="PopupPanel/pad_conf_panel/bank_bloc/remove_bank" to="PopupPanel/pad_conf_panel" method="_on_remove_bank_pressed"]
 [connection signal="pressed" from="PopupPanel/pad_conf_panel/bank_bloc/Button_down_bank" to="PopupPanel/pad_conf_panel" method="_on_Button_down_bank_pressed"]
 [connection signal="pressed" from="PopupPanel/pad_conf_panel/bank_bloc/Button_up_bank" to="PopupPanel/pad_conf_panel" method="_on_Button_up_bank_pressed"]
+[connection signal="pressed" from="PopupPanel/pad_conf_panel/bank_bloc/add_bank" to="PopupPanel/pad_conf_panel" method="_on_add_bank_pressed"]
 [connection signal="timeout" from="noMidi/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="Popupinfo/Button" to="." method="_on_Button_close_pressed"]

@@ -64,12 +64,13 @@ enum GlobalScope_MidiMessageList {
 func get_midi_message_description(event : InputEventMIDI):
 	if GlobalScope_MidiMessageList.values().has(event.message):
 		return GlobalScope_MidiMessageList.keys()[event.message - 0x08]
-	#print(event.message)
+		#print(str(event.message))
 	
 func _unhandled_input(event : InputEvent):
 	var midi_bt_node = get_tree().get_nodes_in_group("midi_bt")
 
 	if (event is InputEventMIDI):
+		print("ok")
 
 		var key_index = event.pitch
 		for midi_bt in midi_bt_node:
@@ -106,3 +107,22 @@ func _on_Button_up_bank_pressed():
 		active_set = active_set+1
 		$bank_bloc/bank_status.text = "active bank: " +str(active_set+1)
 		set_current_pad_tab()
+
+
+func _on_remove_bank_pressed():
+	midi_map.remove(active_set)
+	bank_number -= 1
+	if active_set != 0:
+		active_set -= 1
+	$bank_bloc/bank_status.text = "active bank: " +str(active_set+1)
+	set_current_pad_tab()
+
+
+func _on_add_bank_pressed():
+	var new_pad = []
+	
+	for Npad in pad:
+		new_pad.append("none")
+	midi_map.append(new_pad)
+	print(new_pad)
+	bank_number += 1
