@@ -1002,6 +1002,7 @@ margin_left = 215.246
 margin_top = 94.3713
 margin_right = 718.245
 margin_bottom = 399.371
+window_title = "midi pad configuration"
 script = ExtResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
