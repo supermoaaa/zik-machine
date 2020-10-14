@@ -133,7 +133,6 @@ func _ready():
 		loop_button.add_child(loop_text)
 		
 
-
 		var mute_button = TextureButton.new()
 		mute_button.margin_top = OS.get_screen_size().y/2 + (pad_number*3)
 		mute_button.margin_bottom = OS.get_screen_size().y/2 + (pad_number*5)
@@ -150,7 +149,6 @@ func _ready():
 		
 		var mute_text = Label.new()
 		mute_text.text = "mute"
-		#mute_text.has_color(black, "")
 		mute_text.margin_left = 15
 		mute_text.align = 2
 		mute_text.valign = 1
@@ -331,7 +329,6 @@ func _on_Button_toggled(button_pressed):
 	else:
 		for loop in loops_node:
 			loop.pressed = false
-		
 
 
 func _on_save_current_bank_pressed():
