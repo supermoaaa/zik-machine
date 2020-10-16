@@ -63,7 +63,8 @@ func get_conf_list(path):
 	return files
 
 func _ready():
-	
+	var configFile = ConfigFile.new()
+	configFile.load(conf_file)	
 	var list_machine = get_conf_list("res://model/")
 
 	OS.open_midi_inputs()
@@ -72,18 +73,17 @@ func _ready():
 	
 	for current_midi_input in OS.get_connected_midi_inputs():
 		if not current_midi_input in list_machine:
-			var configFile = ConfigFile.new()
+			configFile = ConfigFile.new()
 			configFile.load(default_conf)
 			var new_conf_file = "res://model/" + str(current_midi_input)+".cfg"
 			configFile.save(new_conf_file)
 			$PopupPanel.show()			
 			
 			
-		var configFile = ConfigFile.new()
+		configFile = ConfigFile.new()
 		configFile.load(conf_file)
 		configFile.set_value("MACHINE", "active_machine", "res://model/"+str(current_midi_input)+".cfg")
 		configFile.save(conf_file)
-		print(current_midi_input)
 		
 
 			

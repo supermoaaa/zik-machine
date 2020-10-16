@@ -209,6 +209,7 @@ enum GlobalScope_MidiMessageList {
 	MIDI_MESSAGE_PROGRAM_CHANGE = 0xC,
 	MIDI_MESSAGE_CHANNEL_PRESSURE = 0xD,
 	MIDI_MESSAGE_PITCH_BEND = 0xE,
+	MIDI_MESSAGE_SYSTEM = 0xF,
 };
 
 func get_midi_message_description(event : InputEventMIDI):
@@ -224,7 +225,7 @@ func _unhandled_input(event : InputEvent):
 		#event_dump = "event: {0}\n".format([get_midi_message_description(event)])
 		#event_dump = "chn: {channel} msg: {message}\n".format({"channel": event.channel, "message": event.message})
 		#event_dump = "  pitch: {pitch} vel: {velocity}\n".format({"pitch": event.pitch, "velocity": event.velocity})
-		#print(event)
+		print(event.message)
 		var key_index = event.pitch
 		var key_vel = event.velocity
 		
