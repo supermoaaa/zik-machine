@@ -57,6 +57,15 @@ func load_wav_file(root, path):
 		start_rep.set_text(0, str(rep.get_file ()))
 		list_file[rep.get_file ()] = rep
 
+func set_rep(name, path, color):
+	var rep = $File_rep.create_item($File_rep)
+	rep.set_text(0, name)
+	rep.set_selectable(0, false)
+	rep.set_collapsed(true)
+	rep.set_custom_color(0, color)
+	load_wav_file(rep, path)
+
+
 func _process(_delta):
 	if (Input.is_mouse_button_pressed(BUTTON_LEFT)):
 		if drag_file == true:
@@ -71,20 +80,11 @@ func _ready():
 	
 	var file_rep = get_node("File_rep")
 	$File_rep.create_item(file_rep)
-	file_rep.set_hide_root(true)
+	$File_rep.set_hide_root(true)
 	
-	var sample_rep = file_rep.create_item(file_rep)
-	sample_rep.set_text(0, "sample")
-	sample_rep.set_selectable(0, false)
-	sample_rep.set_collapsed(true)
-	sample_rep.set_custom_color(0, Color(0.5, 0.8, 0.0, 1.0))
-	load_wav_file(sample_rep, "res://sample_path.sav")
-	
-	var loop_rep = file_rep.create_item(file_rep)
-	loop_rep.set_text(0, "loop")
-	loop_rep.set_selectable(0, false)
-	loop_rep.set_collapsed(true)
-	load_wav_file(loop_rep, "res://loop_path.sav")
+	set_rep("sample", "res://sample_path.sav", Color(0.5, 0.8, 0.0, 1.0))
+	set_rep("loop", "res://loop_path.sav", Color(1.0, 0.2, 0.0, 1.0))
+
 	
 	var pad_name = 0
 	var configFile = ConfigFile.new()
