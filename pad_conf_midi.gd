@@ -70,7 +70,6 @@ func _unhandled_input(event : InputEvent):
 	var midi_bt_node = get_tree().get_nodes_in_group("midi_bt")
 
 	if (event is InputEventMIDI):
-		print("ok")
 
 		var key_index = event.pitch
 		for midi_bt in midi_bt_node:
