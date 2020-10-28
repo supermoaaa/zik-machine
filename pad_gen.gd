@@ -83,7 +83,8 @@ func _ready():
 	$File_rep.set_hide_root(true)
 	
 	set_rep("sample", "res://sample_path.sav", Color(0.5, 0.8, 0.0, 1.0))
-	set_rep("loop", "res://loop_path.sav", Color(1.0, 0.2, 0.0, 1.0))
+	set_rep("loop", "res://loop_path.sav", Color(0.0, 0.9, 0.0, 1.0))
+	set_rep("record", "res://record_path.sav", Color(1.0, 0.2, 0.0, 1.0))
 
 	
 	var pad_name = 0

@@ -70,6 +70,7 @@ func _ready():
 	OS.open_midi_inputs()
 	load_file("res://loop/", "res://loop_path.sav")
 	load_file("res://sample/", "res://sample_path.sav")
+	load_file("res://record/", "res://record_path.sav")
 	
 	for current_midi_input in OS.get_connected_midi_inputs():
 		if not current_midi_input in list_machine:
