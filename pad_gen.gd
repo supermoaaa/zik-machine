@@ -53,9 +53,10 @@ func load_wav_file(root, path):
 		list_wav.append(file.get_line())
 	#print(list_wav)
 	for rep in list_wav:
-		var start_rep = get_node("File_rep").create_item(root)
-		start_rep.set_text(0, str(rep.get_file ()))
-		list_file[rep.get_file ()] = rep
+		if len(rep) > 2:
+			var start_rep = get_node("File_rep").create_item(root)
+			start_rep.set_text(0, str(rep.get_file ()))
+			list_file[rep.get_file ()] = rep
 
 func set_rep(name, path, color):
 	var rep = $File_rep.create_item($File_rep)
