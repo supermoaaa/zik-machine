@@ -217,6 +217,9 @@ margin_right = 179.617
 margin_bottom = 95.1684
 theme = ExtResource( 25 )
 text = "recordName"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="foot/ColorRect/Rec_Button"]
 margin_left = 92.0
@@ -1184,7 +1187,9 @@ script = ExtResource( 26 )
 [connection signal="toggled" from="body/loop all" to="body" method="_on_Button_toggled"]
 [connection signal="pressed" from="body/save current bank" to="body" method="_on_save_current_bank_pressed"]
 [connection signal="toggled" from="body/MuteButtonItem" to="body" method="_on_MuteButtonItem_toggled"]
+[connection signal="toggled" from="foot/ColorRect/Rec_Button" to="body" method="_on_Rec_Button_toggled"]
 [connection signal="toggled" from="foot/ColorRect/Rec_Button" to="foot/ColorRect/Rec_Button" method="_on_Rec_Button_toggled"]
+[connection signal="text_entered" from="foot/ColorRect/Rec_Button/LineEdit" to="body" method="_on_LineEdit_text_entered"]
 [connection signal="text_entered" from="foot/ColorRect/Rec_Button/LineEdit" to="foot/ColorRect/Rec_Button" method="_on_LineEdit_text_entered"]
 [connection signal="value_changed" from="foot/ColorRect/MasterRect/Master_vol" to="." method="_on_VSlider_value_changed"]
 [connection signal="pressed" from="foot/ColorRect/loopPanel/playLoop" to="foot/ColorRect/loopPanel" method="_on_playLoop_pressed"]

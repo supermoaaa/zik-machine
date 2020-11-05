@@ -8,12 +8,14 @@ var midi_map = []
 var PATH = "res://sample/"
 
 var drag_file = false
-var list_file = {}
+var list_file = {} # name:path
 var Master_vol_midi = 13
 var looper = false
 var audio_set = []
 var active_set = 0
 var pad_number = 0
+var default_rec_path = "res://record/"
+var default_rec_name = "recorded.wav"
 
 func get_filelist(scan_dir : String) -> Array:
 	var my_files : Array = []
@@ -38,7 +40,7 @@ func get_filelist(scan_dir : String) -> Array:
 	
 	return my_files
 	
-func load_wav_file(root, path):
+func load_wav_file(parent, path):
 
 	var file = File.new()
 	var list_wav = []
@@ -54,7 +56,7 @@ func load_wav_file(root, path):
 	#print(list_wav)
 	for rep in list_wav:
 		if len(rep) > 2:
-			var start_rep = get_node("File_rep").create_item(root)
+			var start_rep = get_node("File_rep").create_item(parent)
 			start_rep.set_text(0, str(rep.get_file ()))
 			list_file[rep.get_file ()] = rep
 
@@ -78,7 +80,6 @@ func _process(_delta):
 
 
 func _ready():
-	
 	var file_rep = get_node("File_rep")
 	$File_rep.create_item(file_rep)
 	$File_rep.set_hide_root(true)
@@ -345,3 +346,16 @@ func _on_save_current_bank_pressed():
 func _on_MuteButtonItem_toggled(_button_pressed):
 	if $MuteButtonItem.pressed == true:
 		$sound_file.stop()
+
+
+func _on_Rec_Button_toggled(button_pressed):
+	if not button_pressed:
+		#var rep = $File_rep.select(1, false)
+		var rec = $File_rep.create_item($File_rep)
+		rec.set_text(0, default_rec_name)
+		list_file[default_rec_name] = default_rec_path + default_rec_name
+		pass
+
+
+func _on_LineEdit_text_entered(new_text):
+	default_rec_name = new_text + ".wav"
