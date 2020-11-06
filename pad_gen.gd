@@ -16,6 +16,8 @@ var active_set = 0
 var pad_number = 0
 var default_rec_path = "res://record/"
 var default_rec_name = "recorded.wav"
+var recordingeffectmaster = AudioServer.get_bus_effect(0, 0)
+var list_rec = []
 
 func get_filelist(scan_dir : String) -> Array:
 	var my_files : Array = []
@@ -100,6 +102,7 @@ func _ready():
 	audio_set = configFile.get_value("PAD CONF", "audio_set")
 	midi_map = configFile.get_value("PAD CONF", "midi_set")
 	Master_vol_midi = configFile.get_value("PAD CONF", "midi_master")
+	default_rec_path = configFile.get_value("OUTPUT", "song_save_path")
 
 	for pad in pad_number:
 		var pad_button = Button.new()
@@ -349,7 +352,38 @@ func _on_MuteButtonItem_toggled(_button_pressed):
 
 
 func _on_Rec_Button_toggled(button_pressed):
-	if not button_pressed:
+	if button_pressed:
+		recordingeffectmaster.set_recording_active(true)
+		
+	else:
+		recordingeffectmaster.set_recording_active(false)
+		var final_recording = recordingeffectmaster.get_recording()
+		final_recording.save_to_wav(default_rec_path+default_rec_name)
+		
+		
+
+		var file = File.new()		
+		if not file.file_exists("res://record_path.sav"):
+			print("No file detected")
+			return
+		if file.open("res://record_path.sav", File.READ) != 0:
+			print("Error opening file")
+			return
+		
+		while not file.eof_reached():
+			list_rec.append(file.get_line())
+		list_rec.append(str(default_rec_path+default_rec_name))
+		file.close()
+		
+
+		if file.open("res://record_path.sav", File.WRITE) != 0:
+			print("Error opening file")
+			return
+
+		for rec_file in list_rec:
+			file.store_line(rec_file)
+		file.close()
+		#var rep = self.get_tree()
 		#var rep = $File_rep.select(1, false)
 		var rec = $File_rep.create_item($File_rep)
 		rec.set_text(0, default_rec_name)
