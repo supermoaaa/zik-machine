@@ -351,6 +351,7 @@ func _on_MuteButtonItem_toggled(_button_pressed):
 		$sound_file.stop()
 
 
+	
 func _on_Rec_Button_toggled(button_pressed):
 	if button_pressed:
 		recordingeffectmaster.set_recording_active(true)
@@ -358,6 +359,8 @@ func _on_Rec_Button_toggled(button_pressed):
 	else:
 		recordingeffectmaster.set_recording_active(false)
 		var final_recording = recordingeffectmaster.get_recording()
+		if default_rec_name in list_file:
+			default_rec_name = default_rec_name + "0"
 		final_recording.save_to_wav(default_rec_path+default_rec_name)
 		
 		
@@ -384,7 +387,10 @@ func _on_Rec_Button_toggled(button_pressed):
 			file.store_line(rec_file)
 		file.close()
 		#var rep = self.get_tree()
-		#var rep = $File_rep.select(1, false)
+		#var rep = get_tree_item_child_by_text(TreeItem, "record")
+		#var rep = $File_rep.get_child(0)
+		
+		#print(rep)
 		var rec = $File_rep.create_item($File_rep)
 		rec.set_text(0, default_rec_name)
 		list_file[default_rec_name] = default_rec_path + default_rec_name
