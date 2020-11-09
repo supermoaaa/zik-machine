@@ -209,22 +209,35 @@ __meta__ = {
 }
 
 [node name="LineEdit" type="LineEdit" parent="foot/ColorRect/Rec_Button"]
-margin_left = 84.6174
-margin_top = 71.1684
-margin_right = 179.617
-margin_bottom = 95.1684
+margin_left = 85.0
+margin_top = 71.0
+margin_right = 199.0
+margin_bottom = 95.0
 theme = ExtResource( 25 )
-text = "recordName"
+text = "recorded"
+clear_button_enabled = true
+caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="foot/ColorRect/Rec_Button"]
-margin_left = 92.0
-margin_top = 48.0
-margin_right = 251.0
-margin_bottom = 62.0
+margin_left = 92.7491
+margin_top = 52.4949
+margin_right = 251.749
+margin_bottom = 66.4949
 text = "output record file name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="foot/ColorRect/Rec_Button"]
+margin_left = 101.0
+margin_top = 20.0
+margin_right = 181.0
+margin_bottom = 40.0
+toggle_mode = true
+text = "start on pad"
 
 [node name="MasterRect" type="ColorRect" parent="foot/ColorRect"]
 anchor_top = 0.5
