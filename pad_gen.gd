@@ -18,6 +18,8 @@ var default_rec_path = "res://record/"
 var default_rec_name = "recorded.wav"
 var recordingeffectmaster = AudioServer.get_bus_effect(0, 0)
 var list_rec = []
+var start_on_pad = false
+var active_rec = false
 
 func get_filelist(scan_dir : String) -> Array:
 	var my_files : Array = []
@@ -278,6 +280,10 @@ func pad_press(pad_name):
 	var active_stream = get_node("play_instance" + str(pad_name))
 	var active_mute = get_node("mute"+ str(pad_name))
 	var active_loop = get_node("loop"+ str(pad_name))
+	if active_rec == true:
+		recordingeffectmaster.set_recording_active(true)
+		active_rec = false
+		
 	if active_mute.pressed == false :
 		if active_loop.pressed == false :
 			active_stream.play()
@@ -354,7 +360,10 @@ func _on_MuteButtonItem_toggled(_button_pressed):
 	
 func _on_Rec_Button_toggled(button_pressed):
 	if button_pressed:
-		recordingeffectmaster.set_recording_active(true)
+		if start_on_pad == false:
+			recordingeffectmaster.set_recording_active(true)
+		else:
+			active_rec = true
 		
 	else:
 		recordingeffectmaster.set_recording_active(false)
@@ -399,3 +408,7 @@ func _on_Rec_Button_toggled(button_pressed):
 
 func _on_LineEdit_text_entered(new_text):
 	default_rec_name = new_text + ".wav"
+
+
+func _on_start_rec_toggled(button_pressed):
+	start_on_pad = button_pressed

@@ -231,7 +231,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="foot/ColorRect/Rec_Button"]
+[node name="start_rec" type="Button" parent="foot/ColorRect/Rec_Button"]
 margin_left = 101.0
 margin_top = 20.0
 margin_right = 181.0
@@ -1200,6 +1200,7 @@ script = ExtResource( 26 )
 [connection signal="toggled" from="body/MuteButtonItem" to="body" method="_on_MuteButtonItem_toggled"]
 [connection signal="toggled" from="foot/ColorRect/Rec_Button" to="body" method="_on_Rec_Button_toggled"]
 [connection signal="text_entered" from="foot/ColorRect/Rec_Button/LineEdit" to="body" method="_on_LineEdit_text_entered"]
+[connection signal="toggled" from="foot/ColorRect/Rec_Button/start_rec" to="body" method="_on_start_rec_toggled"]
 [connection signal="value_changed" from="foot/ColorRect/MasterRect/Master_vol" to="." method="_on_VSlider_value_changed"]
 [connection signal="pressed" from="foot/ColorRect/loopPanel/playLoop" to="foot/ColorRect/loopPanel" method="_on_playLoop_pressed"]
 [connection signal="pressed" from="foot/ColorRect/loopPanel/pauseLoop" to="foot/ColorRect/loopPanel" method="_on_pauseLoop_pressed"]
