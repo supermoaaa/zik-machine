@@ -369,7 +369,7 @@ func _on_Rec_Button_toggled(button_pressed):
 		recordingeffectmaster.set_recording_active(false)
 		var final_recording = recordingeffectmaster.get_recording()
 		if default_rec_name in list_file:
-			default_rec_name = default_rec_name + "0"
+			default_rec_name = default_rec_name.get_basename() + "0.wav"
 		final_recording.save_to_wav(default_rec_path+default_rec_name)
 		
 		
