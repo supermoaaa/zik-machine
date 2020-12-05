@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://utils/rec_off.png" type="Texture" id=1]
 [ext_resource path="res://utils/rec_over.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://utils/faderSmall.png" type="Texture" id=5]
 [ext_resource path="res://utils/faderSmallhi.png" type="Texture" id=6]
 [ext_resource path="res://conf_Panel.gd" type="Script" id=7]
+[ext_resource path="res://Rec_Gui.gd" type="Script" id=8]
 [ext_resource path="res://pad_gen.gd" type="Script" id=9]
 [ext_resource path="res://MasterVumetre.gd" type="Script" id=10]
 [ext_resource path="res://bTtheme.tres" type="Theme" id=11]
@@ -205,6 +206,7 @@ texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 2 )
 texture_disabled = ExtResource( 1 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -214,9 +216,13 @@ margin_left = 85.0
 margin_top = 71.0
 margin_right = 199.0
 margin_bottom = 95.0
+mouse_default_cursor_shape = 2
 theme = ExtResource( 25 )
+custom_constants/minimum_spaces = 2
 text = "recorded"
+align = 1
 clear_button_enabled = true
+placeholder_alpha = 0.632
 caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1201,6 +1207,7 @@ script = ExtResource( 26 )
 [connection signal="toggled" from="body/MuteButtonItem" to="body" method="_on_MuteButtonItem_toggled"]
 [connection signal="toggled" from="foot/ColorRect/Rec_Button" to="body" method="_on_Rec_Button_toggled"]
 [connection signal="text_entered" from="foot/ColorRect/Rec_Button/LineEdit" to="body" method="_on_LineEdit_text_entered"]
+[connection signal="text_entered" from="foot/ColorRect/Rec_Button/LineEdit" to="foot/ColorRect/Rec_Button" method="_on_LineEdit_text_entered"]
 [connection signal="toggled" from="foot/ColorRect/Rec_Button/start_rec" to="body" method="_on_start_rec_toggled"]
 [connection signal="value_changed" from="foot/ColorRect/MasterRect/Master_vol" to="." method="_on_VSlider_value_changed"]
 [connection signal="pressed" from="foot/ColorRect/loopPanel/playLoop" to="foot/ColorRect/loopPanel" method="_on_playLoop_pressed"]

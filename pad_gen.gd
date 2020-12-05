@@ -118,6 +118,16 @@ func _ready():
 		pad_button.connect("mouse_entered", self, "pad_change_sample", [pad_name])
 		self.add_child(pad_button)
 		
+		var pad_separator = VSeparator.new()
+		pad_separator.margin_top = self.get_rect().position[1]+self.get_rect().size[1]
+		pad_separator.margin_bottom = self.get_rect().position[1]+self.get_rect().size[1]*2
+		pad_separator.margin_left = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.8))
+		pad_separator.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 4.0))
+		pad_separator.name = "sep" + str(pad_name)
+		#pad_separator.size_flags_horizontal = 2
+		self.add_child(pad_separator)
+		
+				
 		var loop_button = TextureButton.new()
 		loop_button.margin_top = OS.get_screen_size().y/2 - (pad_number*1)
 		loop_button.margin_bottom = OS.get_screen_size().y/2 + (pad_number*1)
