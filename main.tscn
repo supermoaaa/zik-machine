@@ -1245,5 +1245,6 @@ script = ExtResource( 26 )
 [connection signal="pressed" from="PopupPanel/pad_conf_panel/bank_bloc/Button_down_bank" to="PopupPanel/pad_conf_panel" method="_on_Button_down_bank_pressed"]
 [connection signal="pressed" from="PopupPanel/pad_conf_panel/bank_bloc/Button_up_bank" to="PopupPanel/pad_conf_panel" method="_on_Button_up_bank_pressed"]
 [connection signal="pressed" from="PopupPanel/pad_conf_panel/bank_bloc/add_bank" to="PopupPanel/pad_conf_panel" method="_on_add_bank_pressed"]
+[connection signal="gui_input" from="noMidi" to="." method="_on_noMidi_gui_input"]
 [connection signal="timeout" from="noMidi/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="Popupinfo/Button" to="." method="_on_Button_close_pressed"]

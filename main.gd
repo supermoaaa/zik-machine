@@ -149,3 +149,8 @@ func _on_Button_pressed():
 
 func _on_Button_close_pressed():
 	$Popupinfo.hide()
+
+
+func _on_noMidi_gui_input(event):
+	if event is InputEventMouseButton:
+		$noMidi.hide()
