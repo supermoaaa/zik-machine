@@ -1,3 +1,6 @@
+
+![splahscreen](https://raw.githubusercontent.com/supermoaaa/zik-machine/master/utils/splahscreen.png)
+
 live pad system
 
 multipatform program
