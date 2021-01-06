@@ -474,6 +474,9 @@ margin_bottom = 57.226
 min_value = 50.0
 max_value = 200.0
 value = 130.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AudioMetronome" type="AudioStreamPlayer" parent="foot/ColorRect/Metronome"]
 stream = ExtResource( 22 )
@@ -1218,6 +1221,7 @@ script = ExtResource( 26 )
 [connection signal="pressed" from="foot/ColorRect/loopPanel/stopLoop" to="foot/ColorRect/loopPanel" method="_on_stopLoop_pressed"]
 [connection signal="item_selected" from="foot/ColorRect/loopPanel/LoopTrack" to="foot/ColorRect/loopPanel" method="_on_LoopTrack_item_selected"]
 [connection signal="value_changed" from="foot/ColorRect/loopPanel/loopVolume" to="foot/ColorRect/loopPanel" method="_on_loopVolume_value_changed"]
+[connection signal="value_changed" from="foot/ColorRect/Metronome/SpinBox" to="body" method="_on_SpinBox_value_changed"]
 [connection signal="value_changed" from="foot/ColorRect/Metronome/SpinBox" to="foot/ColorRect/Metronome" method="_on_SpinBox_value_changed"]
 [connection signal="value_changed" from="foot/ColorRect/Metronome/Vol_Slider_tempo" to="foot/ColorRect/Metronome" method="_on_Vol_Slider_tempo_value_changed"]
 [connection signal="toggled" from="foot/ColorRect/Metronome/sound" to="foot/ColorRect/Metronome" method="_on_Button_toggled"]

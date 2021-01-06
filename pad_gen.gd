@@ -21,6 +21,12 @@ var list_rec = []
 var start_on_pad = false
 var active_rec = false
 
+#bpm variable
+var master_Tempo = 461.0
+var time = 0.0
+var last_ticks = 0.0
+
+
 func get_filelist(scan_dir : String) -> Array:
 	var my_files : Array = []
 	var dir := Directory.new()
@@ -422,3 +428,7 @@ func _on_LineEdit_text_entered(new_text):
 
 func _on_start_rec_toggled(button_pressed):
 	start_on_pad = button_pressed
+
+
+func _on_SpinBox_value_changed(value):
+	master_Tempo = 60000/value
