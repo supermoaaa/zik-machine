@@ -78,7 +78,11 @@ func set_rep(name, path, color):
 	rep.set_custom_color(0, color)
 	load_wav_file(rep, path)
 
-
+func Global_sync():
+	time = OS.get_ticks_msec()
+	if time - last_ticks >= master_Tempo:
+		last_ticks = time
+	
 func _process(_delta):
 	if (Input.is_mouse_button_pressed(BUTTON_LEFT)):
 		if drag_file == true:
@@ -178,6 +182,28 @@ func _ready():
 		mute_text.valign = 1
 		self.add_child(mute_button)
 		mute_button.add_child(mute_text)
+
+		var ToTemp_button = TextureButton.new()
+		ToTemp_button.margin_top = OS.get_screen_size().y/2 + (pad_number*1.2)
+		ToTemp_button.margin_bottom = OS.get_screen_size().y/2 + (pad_number*3)
+		ToTemp_button.margin_left = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3))
+		ToTemp_button.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.8))
+		ToTemp_button.name = "mute" + str(pad_name)
+
+		ToTemp_button.texture_normal = load("res://utils/bt_off.png")
+		ToTemp_button.texture_hover = load("res://utils/bt_over.png")
+		ToTemp_button.texture_pressed = load("res://utils/bt_on.png")
+		ToTemp_button.expand = true
+		ToTemp_button.toggle_mode = true
+		ToTemp_button.connect("button_down", self, "_active_snyc_bpm", [pad_name])
+		
+		var ToTemp_text = Label.new()
+		ToTemp_text.text = "bpm sync"
+		ToTemp_text.margin_left = 6
+		ToTemp_text.align = 2
+		ToTemp_text.valign = 1
+		self.add_child(ToTemp_button)
+		ToTemp_button.add_child(ToTemp_text)
 
 		var vel_button = TextureButton.new()
 		vel_button.margin_top = OS.get_screen_size().y/2 + (pad_number*5)
@@ -432,3 +458,6 @@ func _on_start_rec_toggled(button_pressed):
 
 func _on_SpinBox_value_changed(value):
 	master_Tempo = 60000/value
+	
+func _active_snyc_bpm(pad_name):
+	pass
