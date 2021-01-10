@@ -82,6 +82,9 @@ func set_rep(name, path, color):
 func Global_sync():
 	time = OS.get_ticks_msec()
 	if time - last_ticks >= master_Tempo:
+		for sample in snyc_list:
+			var active_stream = get_node(str(sample))
+			active_stream.play()
 		last_ticks = time
 	
 func _process(_delta):
@@ -91,7 +94,7 @@ func _process(_delta):
 	else:
 		$selfile.visible = false
 		drag_file = false
-	pass
+	Global_sync()
 
 
 func _ready():
