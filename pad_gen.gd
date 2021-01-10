@@ -25,6 +25,7 @@ var active_rec = false
 var master_Tempo = 461.0
 var time = 0.0
 var last_ticks = 0.0
+var snyc_list = []
 
 
 func get_filelist(scan_dir : String) -> Array:
@@ -195,7 +196,7 @@ func _ready():
 		ToTemp_button.texture_pressed = load("res://utils/bt_on.png")
 		ToTemp_button.expand = true
 		ToTemp_button.toggle_mode = true
-		ToTemp_button.connect("button_down", self, "_active_snyc_bpm", [pad_name])
+		ToTemp_button.connect("toggled", self, "_active_snyc_bpm", [pad_name])
 		
 		var ToTemp_text = Label.new()
 		ToTemp_text.text = "bpm sync"
@@ -459,5 +460,10 @@ func _on_start_rec_toggled(button_pressed):
 func _on_SpinBox_value_changed(value):
 	master_Tempo = 60000/value
 	
-func _active_snyc_bpm(pad_name):
-	pass
+func _active_snyc_bpm(toggled, pad_name):
+	if toggled == true:
+		snyc_list.append("play_instance" + str(pad_name))
+	else:
+		var idx = snyc_list.find("play_instance" + str(pad_name))
+		snyc_list.remove(idx)
+	print(snyc_list)
