@@ -469,4 +469,4 @@ func _active_snyc_bpm(toggled, pad_name):
 	else:
 		var idx = snyc_list.find("play_instance" + str(pad_name))
 		snyc_list.remove(idx)
-	print(snyc_list)
+
