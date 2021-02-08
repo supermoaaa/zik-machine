@@ -83,8 +83,10 @@ func Global_sync():
 	time = OS.get_ticks_msec()
 	if time - last_ticks >= master_Tempo:
 		for sample in snyc_list:
-			var active_stream = get_node("play_instance" + str(sample))
-			active_stream.play()
+			var active_loop = get_node("loop"+ str(sample))
+			if active_loop.pressed == true and looper == true:
+				var active_stream = get_node("play_instance" + str(sample))
+				active_stream.play()
 		last_ticks = time
 	
 func _process(_delta):
