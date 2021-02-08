@@ -194,9 +194,9 @@ func _ready():
 		ToTemp_button.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.8))
 		ToTemp_button.name = "mute" + str(pad_name)
 
-		ToTemp_button.texture_normal = load("res://utils/bt_off.png")
-		ToTemp_button.texture_hover = load("res://utils/bt_over.png")
-		ToTemp_button.texture_pressed = load("res://utils/bt_on.png")
+		ToTemp_button.texture_normal = load("res://utils/bt_off2.png")
+		ToTemp_button.texture_hover = load("res://utils/bt_over2.png")
+		ToTemp_button.texture_pressed = load("res://utils/bt_on2.png")
 		ToTemp_button.expand = true
 		ToTemp_button.toggle_mode = true
 		ToTemp_button.connect("toggled", self, "_active_snyc_bpm", [pad_name])
