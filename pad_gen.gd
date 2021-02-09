@@ -20,6 +20,7 @@ var recordingeffectmaster = AudioServer.get_bus_effect(0, 0)
 var list_rec = []
 var start_on_pad = false
 var active_rec = false
+var rec_Folder = null
 
 #bpm variable
 var master_Tempo = 461.0
@@ -78,6 +79,9 @@ func set_rep(name, path, color):
 	rep.set_collapsed(true)
 	rep.set_custom_color(0, color)
 	load_wav_file(rep, path)
+	if name == "record":
+		rec_Folder = rep
+		return rec_Folder
 
 func Global_sync():
 	time = OS.get_ticks_msec()
@@ -107,6 +111,7 @@ func _ready():
 	set_rep("sample", "res://sample_path.sav", Color(0.5, 0.8, 0.0, 1.0))
 	set_rep("loop", "res://loop_path.sav", Color(0.0, 0.9, 0.0, 1.0))
 	set_rep("record", "res://record_path.sav", Color(1.0, 0.2, 0.0, 1.0))
+	
 
 	
 	var pad_name = 0
@@ -448,7 +453,7 @@ func _on_Rec_Button_toggled(button_pressed):
 		#var rep = $File_rep.get_child(0)
 		
 		#print(rep)
-		var rec = $File_rep.create_item($File_rep)
+		var rec = $File_rep.create_item(rec_Folder)
 		rec.set_text(0, default_rec_name)
 		list_file[default_rec_name] = default_rec_path + default_rec_name
 		pass
