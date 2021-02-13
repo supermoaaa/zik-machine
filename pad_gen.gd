@@ -102,6 +102,9 @@ func _process(_delta):
 		drag_file = false
 	Global_sync()
 
+func audio_loader(sample):
+	return(load(sample))
+	pass
 
 func _ready():
 	
@@ -256,7 +259,7 @@ func _ready():
 		
 		var play_instance = AudioStreamPlayer.new()
 		play_instance.name = "play_instance" + str(pad_name)
-		play_instance.stream = load(audio_set[active_set][pad_name])
+		play_instance.stream = audio_loader(audio_set[active_set][pad_name])
 		play_instance.volume_db = -15
 		play_instance.connect("finished", self, "audio_stat", [str(pad_name)])
 		play_instance.add_to_group("song")
@@ -366,7 +369,7 @@ func pad_change_sample(pad_name):
 			get_node("play_instance"+str(pad_name)).stop()
 			
 		get_node(active_node).text = sel_file_name.left ( 6 )
-		get_node("play_instance"+str(pad_name)).stream = load(list_file[sel_file_name])
+		get_node("play_instance"+str(pad_name)).stream = audio_loader(list_file[sel_file_name])
 		audio_set[active_set][pad_name] = list_file[sel_file_name]
 		if looper == true:
 			get_node("play_instance"+str(pad_name)).play()
@@ -381,7 +384,7 @@ func audio_stat(pad_name):
 		active_stream.play()
 
 func _on_File_rep_cell_selected():
-	$sound_file.stream = load(list_file[get_node("File_rep").get_selected().get_text(0)])
+	$sound_file.stream = audio_loader(list_file[get_node("File_rep").get_selected().get_text(0)])
 	if $MuteButtonItem.pressed == false:
 		$sound_file.play()
 	$selfile.set_position(get_local_mouse_position())
