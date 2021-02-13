@@ -104,6 +104,8 @@ func _process(_delta):
 
 
 func _ready():
+	
+	# load sample file
 	var file_rep = get_node("File_rep")
 	$File_rep.create_item(file_rep)
 	$File_rep.set_hide_root(true)
@@ -113,7 +115,7 @@ func _ready():
 	set_rep("record", "res://record_path.sav", Color(1.0, 0.2, 0.0, 1.0))
 	
 
-	
+	# generate pad
 	var pad_name = 0
 	var configFile = ConfigFile.new()
 	configFile.load(conf_file)
@@ -456,6 +458,7 @@ func _on_Rec_Button_toggled(button_pressed):
 		var rec = $File_rep.create_item(rec_Folder)
 		rec.set_text(0, default_rec_name)
 		list_file[default_rec_name] = default_rec_path + default_rec_name
+
 		pass
 
 
