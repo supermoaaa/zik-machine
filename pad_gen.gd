@@ -430,9 +430,16 @@ func _on_Rec_Button_toggled(button_pressed):
 			default_rec_name = default_rec_name.get_basename() + "0.wav"
 		final_recording.save_to_wav(default_rec_path+default_rec_name)
 		
-		
+		var file = File.new()			
+		if file.open("res://record_path.sav", File.WRITE) != 0:
+			print("Error opening file")
+			return
 
-		var file = File.new()		
+		for rec_file in list_rec:
+			file.store_line(rec_file)
+		file.close()
+		
+	
 		if not file.file_exists("res://record_path.sav"):
 			print("No file detected")
 			return
@@ -444,19 +451,7 @@ func _on_Rec_Button_toggled(button_pressed):
 			list_rec.append(file.get_line())
 		list_rec.append(str(default_rec_path+default_rec_name))
 		file.close()
-		
 
-		if file.open("res://record_path.sav", File.WRITE) != 0:
-			print("Error opening file")
-			return
-
-		for rec_file in list_rec:
-			file.store_line(rec_file)
-		file.close()
-		#var rep = self.get_tree()
-		#var rep = get_tree_item_child_by_text(TreeItem, "record")
-		#var rep = $File_rep.get_child(0)
-		
 		#print(rep)
 		var rec = $File_rep.create_item(rec_Folder)
 		rec.set_text(0, default_rec_name)
