@@ -461,7 +461,10 @@ func _on_Rec_Button_toggled(button_pressed):
 
 
 func _on_LineEdit_text_entered(new_text):
-	default_rec_name = new_text + ".wav"
+	if new_text.get_extension () == "wav":
+		default_rec_name = new_text
+	else:
+		default_rec_name = new_text + ".wav"
 
 
 func _on_start_rec_toggled(button_pressed):
