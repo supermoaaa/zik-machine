@@ -103,7 +103,8 @@ func _process(_delta):
 	Global_sync()
 
 func audio_loader(sample):
-	return(load(sample))
+	var audio_stream_sample:AudioStreamSample = load(sample)
+	return(audio_stream_sample)
 	pass
 
 func _ready():
@@ -145,12 +146,12 @@ func _ready():
 		self.add_child(pad_button)
 		
 		var pad_separator = VSeparator.new()
-		pad_separator.margin_top = self.get_rect().position[1]+self.get_rect().size[1]
+		pad_separator.margin_top = self.get_rect().position[1]+(self.get_rect().size[1]/1.15)
 		pad_separator.margin_bottom = self.get_rect().position[1]+self.get_rect().size[1]*2.1
 		pad_separator.margin_left = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 3.9))
 		pad_separator.margin_right = (OS.get_screen_size().x/(pad_number + 4)*(pad_name + 4.0))
 		pad_separator.name = "sep" + str(pad_name)
-		#pad_separator.size_flags_horizontal = 2
+		#pad_separator.size_flags_horizontal = 4
 		self.add_child(pad_separator)
 		
 				
