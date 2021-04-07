@@ -37,9 +37,9 @@
 [node name="main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.87485
+margin_left = 1.75235
 margin_top = -7.15615
-margin_right = 2.87488
+margin_right = 1.75232
 margin_bottom = -7.15613
 mouse_filter = 2
 script = ExtResource( 4 )
@@ -182,7 +182,7 @@ margin_right = 265.0
 margin_bottom = 92.0
 theme = ExtResource( 31 )
 custom_colors/font_color = Color( 0.27451, 0.0235294, 0.305882, 1 )
-custom_colors/font_outline_modulate = Color( 0.435294, 0.00784314, 0.521569, 1 )
+custom_colors/font_outline_modulate = Color( 0.00784314, 0.521569, 0.0627451, 1 )
 text = "ZIK MACHINE"
 __meta__ = {
 "_edit_lock_": true
@@ -1237,8 +1237,8 @@ script = ExtResource( 26 )
 [connection signal="pressed" from="foot/ColorRect/loopPanel/stopLoop" to="foot/ColorRect/loopPanel" method="_on_stopLoop_pressed"]
 [connection signal="item_selected" from="foot/ColorRect/loopPanel/LoopTrack" to="foot/ColorRect/loopPanel" method="_on_LoopTrack_item_selected"]
 [connection signal="value_changed" from="foot/ColorRect/loopPanel/loopVolume" to="foot/ColorRect/loopPanel" method="_on_loopVolume_value_changed"]
-[connection signal="value_changed" from="foot/ColorRect/Metronome/SpinBox" to="foot/ColorRect/Metronome" method="_on_SpinBox_value_changed"]
 [connection signal="value_changed" from="foot/ColorRect/Metronome/SpinBox" to="body" method="_on_SpinBox_value_changed"]
+[connection signal="value_changed" from="foot/ColorRect/Metronome/SpinBox" to="foot/ColorRect/Metronome" method="_on_SpinBox_value_changed"]
 [connection signal="value_changed" from="foot/ColorRect/Metronome/Vol_Slider_tempo" to="foot/ColorRect/Metronome" method="_on_Vol_Slider_tempo_value_changed"]
 [connection signal="toggled" from="foot/ColorRect/Metronome/sound" to="foot/ColorRect/Metronome" method="_on_Button_toggled"]
 [connection signal="toggled" from="foot/ColorRect/micro/ButtonMicro" to="foot/ColorRect/micro" method="_on_ButtonMicro_toggled"]
