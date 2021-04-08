@@ -133,6 +133,15 @@ func _ready():
 	Master_vol_midi = configFile.get_value("PAD CONF", "midi_master")
 	default_rec_path = configFile.get_value("OUTPUT", "song_save_path")
 
+	var frist_pad_separator = VSeparator.new()
+	frist_pad_separator.margin_top = self.get_rect().position[1]+(self.get_rect().size[1]/1.15)
+	frist_pad_separator.margin_bottom = self.get_rect().position[1]+self.get_rect().size[1]*2.1
+	frist_pad_separator.margin_left = (OS.get_screen_size().x/(pad_number + 4))*2.9
+	frist_pad_separator.margin_right = (OS.get_screen_size().x/(pad_number + 4))*2.9
+	frist_pad_separator.name = "sep0"
+	#pad_separator.size_flags_horizontal = 4
+	self.add_child(frist_pad_separator)
+
 	for pad in pad_number:
 		var pad_button = Button.new()
 		pad_button.margin_top = OS.get_screen_size().y/2 - (pad_number*7)
