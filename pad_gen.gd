@@ -102,8 +102,78 @@ func _process(_delta):
 		drag_file = false
 	Global_sync()
 
+func loadfile(filepath):
+	var file = File.new()
+	file.open(filepath, File.READ)
+	var bytes = file.get_buffer(file.get_len())
+
+	# if File is wav
+	if filepath.ends_with(".wav"):
+
+		var newstream = AudioStreamSample.new()
+
+
+		for i in range(0, 100):
+			var those4bytes = str(char(bytes[i])+char(bytes[i+1])+char(bytes[i+2])+char(bytes[i+3]))
+
+			if those4bytes == "fmt ":
+
+				#get format subchunk size, 4 bytes next to "fmt " are an int32
+				var formatsubchunksize = bytes[i+4] + (bytes[i+5] << 8) + (bytes[i+6] << 16) + (bytes[i+7] << 24)
+
+				#using formatsubchunk index so it's easier to understand what's going on
+				var fsc0 = i+8 #fsc0 is byte 8 after start of "fmt "
+
+				#get format code [Bytes 0-1]
+				var format_code = bytes[fsc0] + (bytes[fsc0+1] << 8)
+				newstream.format = format_code
+				
+				#get channel num [Bytes 2-3]
+				var channel_num = bytes[fsc0+2] + (bytes[fsc0+3] << 8)
+
+				if channel_num == 2: newstream.stereo = true
+				
+				#get sample rate [Bytes 4-7]
+				var sample_rate = bytes[fsc0+4] + (bytes[fsc0+5] << 8) + (bytes[fsc0+6] << 16) + (bytes[fsc0+7] << 24)
+				newstream.mix_rate = sample_rate
+				
+
+			if those4bytes == "data":
+				var audio_data_size = bytes[i+4] + (bytes[i+5] << 8) + (bytes[i+6] << 16) + (bytes[i+7] << 24)
+
+				var data_entry_point = (i+8)
+
+				newstream.data = bytes.subarray(data_entry_point, data_entry_point+audio_data_size-1)
+				
+			# end of parsing
+			#---------------------------
+
+		#get samples and set loop end
+		var samplenum = newstream.data.size() / 4
+		newstream.loop_end = samplenum
+		newstream.loop_mode = 0 #change to 0 or delete this line if you don't want loop, also check out modes 2 and 3 in the docs
+		return newstream  #:D
+
+	#if file is ogg
+	elif filepath.ends_with(".ogg"):
+		var newstream = AudioStreamOGGVorbis.new()
+		#newstream.loop = true #set to false or delete this line if you don't want to loop
+		newstream.data = bytes
+		return newstream
+
+	#if file is mp3
+	elif filepath.ends_with(".mp3"):
+		var newstream = AudioStreamMP3.new()
+		#newstream.loop = true #set to false or delete this line if you don't want to loop
+		newstream.data = bytes
+		return newstream
+
+	else:
+		print ("ERROR: Wrong filetype or format")
+	file.close()
+
 func audio_loader(sample):
-	var audio_stream_sample:AudioStreamSample = load(sample)
+	var audio_stream_sample = loadfile(sample)
 	return(audio_stream_sample)
 	pass
 
