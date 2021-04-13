@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hat tight 2.ogg-249d5eab3eed808b36a948384329e3d9.oggstr"
+
+[deps]
+
+source_file="res://sample/basic/hat tight 2.ogg"
+dest_files=[ "res://.import/hat tight 2.ogg-249d5eab3eed808b36a948384329e3d9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
