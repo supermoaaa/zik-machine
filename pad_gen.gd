@@ -118,8 +118,6 @@ func loadfile(filepath):
 
 			if those4bytes == "fmt ":
 
-				#get format subchunk size, 4 bytes next to "fmt " are an int32
-				var formatsubchunksize = bytes[i+4] + (bytes[i+5] << 8) + (bytes[i+6] << 16) + (bytes[i+7] << 24)
 
 				#using formatsubchunk index so it's easier to understand what's going on
 				var fsc0 = i+8 #fsc0 is byte 8 after start of "fmt "
